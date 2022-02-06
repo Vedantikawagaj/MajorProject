@@ -1,0 +1,8 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgb(190, 186, 186);
+
+}
