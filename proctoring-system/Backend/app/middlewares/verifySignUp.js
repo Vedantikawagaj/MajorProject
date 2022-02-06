@@ -4,8 +4,11 @@ const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
   // Username
+  console.log(req.body);
   User.findOne({
+    
     email: req.body.email
+
   }).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });

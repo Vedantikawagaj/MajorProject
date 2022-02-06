@@ -1,30 +1,38 @@
 const express = require('express');
 const app=express();
+const bodyParser = require("body-parser");
 const dbConfig = require('./app/config/db.config');
 const db = require('./app/models');
-const Role = require('./app/models/role.model');
 const Roles=db.role;
 const cors = require('cors');
-var corsoption = {origin:'http://localhost:3000'};
+var corsoption = {
+    origin:'http://localhost:8081'
+};
 
 app.use(cors(corsoption));
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{
-    useNewUrlParser:true
-}).then(()=>{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(()=>{
     console.log('Success');
     initializer();
 }).catch(error=>{
     console.error(error);
     process.exit();
 })
+
 app.get('/',(req,res)=>{
     res.json({
         message:'Welcome',
 
     })
 })
-require('./app/routes/auth.routes');
-require('./app/routes/user.routes');
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 const port = process.env.PORT||8080;
 app.listen(port,()=>{
     console.log('Listening on '+port);

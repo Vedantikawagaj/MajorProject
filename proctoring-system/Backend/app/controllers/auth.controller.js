@@ -15,10 +15,11 @@ exports.signup = (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
   });
-
+  console.log("helloo"+ req.body)
   user.save((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
+      console.log(err)
       return;
     }
 
@@ -30,6 +31,7 @@ exports.signup = (req, res) => {
         (err, roles) => {
           if (err) {
             res.status(500).send({ message: err });
+            console.log(err)
             return;
           }
 
@@ -37,6 +39,7 @@ exports.signup = (req, res) => {
           user.save(err => {
             if (err) {
               res.status(500).send({ message: err });
+              console.log(err)
               return;
             }
 
@@ -48,6 +51,7 @@ exports.signup = (req, res) => {
       Role.findOne({ name: "user" }, (err, role) => {
         if (err) {
           res.status(500).send({ message: err });
+          console.log(err)
           return;
         }
 
@@ -55,6 +59,7 @@ exports.signup = (req, res) => {
         user.save(err => {
           if (err) {
             res.status(500).send({ message: err });
+            console.log(err)
             return;
           }
 
