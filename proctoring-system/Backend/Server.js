@@ -33,6 +33,7 @@ app.get('/',(req,res)=>{
 })
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+require('./app/routes/exam.routes')(app);
 const port = process.env.PORT||8080;
 app.listen(port,()=>{
     console.log('Listening on '+port);
