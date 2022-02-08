@@ -40,11 +40,7 @@ const SideNavbar = () => {
                         <i className="fas fa-video"></i>
                         Monitor Exam
                     </a>
-                    <a className="dashboard-nav-item active">
-                        <i className="fas fa-clipboard"></i>
-                        Publish Result
-                    </a>
-
+             
                     <div className={classname}>
                         <a onClick={handleshow} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
                             <i className="fas fa-plus"></i>
@@ -74,7 +70,12 @@ const SideNavbar = () => {
                         </div>
                     </div>
 
-                    <div className='dashboard-nav-dropdown'><a className="dashboard-nav-item dashboard-nav-dropdown-toggle"><i className="fas fa-users"></i> Users </a>
+                    <a className="dashboard-nav-item active">
+                        <i className="fas fa-clipboard"></i>
+                        Publish Result
+                    </a>
+
+                    {/* <div className='dashboard-nav-dropdown'><a className="dashboard-nav-item dashboard-nav-dropdown-toggle"><i className="fas fa-users"></i> Users </a>
                         <div className='dashboard-nav-dropdown-menu'>
                             <a className="dashboard-nav-dropdown-item">
                                 All
@@ -96,7 +97,7 @@ const SideNavbar = () => {
                                 New
                             </a>
                         </div>
-                    </div>
+                    </div> */}
 
                     
                     <a className="dashboard-nav-item">
