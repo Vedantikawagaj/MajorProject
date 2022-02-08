@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   app.post(
-    "/api/exam/gq",
+    "/api/question/gq",
     controller.generateQuestion
   );
   app.post(
@@ -21,4 +21,7 @@ module.exports = function(app) {
   app.get("/api/exam/ve", controller.viewExam);
   app.delete("/api/exam/de/:examid", controller.deleteExam);
   app.put("/api/exam/ue/:examid", controller.updateExam);
+  app.get("/api/question/vq/:examid", controller.viewQuestion);
+  app.delete("/api/question/dq/:qid", controller.deleteQuestion);
+  app.put("/api/question/uq/:qid", controller.updateQuestion);
 };

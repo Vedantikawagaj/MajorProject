@@ -5,8 +5,9 @@ const Exam = db.exam;
 const Question = db.question;
 
 exports.generateExam = (req, res) => {
+    console.log(req.body);
     const exam = new Exam({
-        examid: req.body.examid,
+        // examid: req.body.examid,
         title: req.body.title,
         duration: req.body.duration,
         totalMarks: req.body.totalMarks
@@ -75,7 +76,7 @@ exports.updateExam = (req, res) => {
     
     const examid = req.params.examid;
     Exam.findByIdAndUpdate(examid,{
-        examid: parseInt(examid),
+        // examid: parseInt(examid),
         title: req.body.title,
         duration: req.body.duration,
         totalMarks: req.body.totalMarks
@@ -119,7 +120,7 @@ exports.generateQuestion = (req, res) => {
         if (req.body.examid) {
             Exam.findOne(
                 {
-                    examid: req.body.examid
+                    _id: req.body.examid
                 },
                 (err) => {
                     if (err) {
@@ -144,5 +145,67 @@ exports.generateQuestion = (req, res) => {
     });
 };
 
+exports.viewQuestion = (req, res) => {
+    const examid = req.params.examid;
+    Question.find({examid:examid},(err,data)=>{
+        if(!data)
+            res.status(404).send({
+                message: "No Questions found"
+            })
+        else{
+            res.status(200).send(data);
+        }  
+        
+    })
+    
+};
 
+exports.deleteQuestion = (req, res) => {
+    
+    const qid = req.params.qid;
+    Question.findByIdAndRemove(qid).then((data)=>{
+        if(!data)
+            res.status(404).send({
+                message: "No questions found"
+            })
+        else{
+            res.status(200).send(data);
+        }    
+    }).catch((err)=>{
+        res.status(500).send({
+            message: "Server error"
+        })
+    })
+    
+};
 
+exports.updateQuestion = (req, res) => {
+    
+    const qid = req.params.qid;
+    Question.findByIdAndUpdate(qid,{
+        // examid: parseInt(examid),
+        examid: req.body.examid,
+        question: req.body.question,
+        a: req.body.a,
+        b: req.body.b,
+        c: req.body.c,
+        d: req.body.d,
+        ans: req.body.ans,
+        marks: req.body.marks
+    },{useFindAndModify:false}).then((data)=>{
+        if(!data)
+            res.status(404).send({
+                message: "No Question found"
+            })
+        else{
+            res.status(200).send(data);
+        }    
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({
+            message: "Server error"
+        })
+    })
+    // Exam.findByIdAndRemove(examid)
+    
+};

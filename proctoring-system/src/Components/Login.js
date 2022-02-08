@@ -22,7 +22,7 @@ const Login=()=>{
          })
 
          const data=await res.json();
-         alert("Login successful");
+         alert(data.message);
          console.log(data);
     }
 
@@ -86,7 +86,7 @@ const Login=()=>{
                                     </div>
                                     <a href="#!">Forgot password?</a>
                                 </div>
-                                <Link to='/register'>
+                                <Link to='/dashboard'>
 
                                 <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</button>
                                 </Link>

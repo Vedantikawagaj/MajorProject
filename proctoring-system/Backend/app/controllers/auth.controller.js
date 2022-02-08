@@ -109,6 +109,7 @@ exports.signin = (req, res) => {
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       }
       res.status(200).send({
+        message: "Login successful",
         id: user._id,
         firstname: user.firstname,
         lastname: user.lastname,

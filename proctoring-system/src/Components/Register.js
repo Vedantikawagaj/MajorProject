@@ -107,14 +107,14 @@ const Register = () => {
                                 </div>
 
 
-
-                                <button
-                                    type="submit"
-                                    class="btn btn-primary btn-lg btn-block"
-                                    onClick={handleRegister}>
-                                    Register
+                                <Link to='/login'>
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary btn-lg btn-block"
+                                        onClick={handleRegister}>
+                                        Register
                                         </button>
-
+                                </Link>
                                 <p class="small fw-bold mt-2 pt-1 mb-0 f5">Already have an account?
                                 <Link to='/login'>
                                         <a href="#!"

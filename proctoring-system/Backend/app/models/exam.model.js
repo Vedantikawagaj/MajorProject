@@ -4,7 +4,7 @@ var autoIncrementuser = require('mongoose-auto-increment');
 autoIncrementuser.initialize(mongoose);
 
 var examschema = new mongoose.Schema({
-  examid: Number,
+  // examid: Number,
   title: String,
   duration: Date,
   totalMarks: Number
@@ -12,7 +12,7 @@ var examschema = new mongoose.Schema({
 
 examschema.plugin(autoIncrementuser.plugin, {
   model: 'Exam',
-  field: 'examid',
+  field: '_id',
   startAt: 1001
 });
 
