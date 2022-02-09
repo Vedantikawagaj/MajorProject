@@ -61,20 +61,14 @@ const SideNavbar = () => {
                                 Create Exam
                             </h6>
                         </Link>
-                        <a className="dashboard-nav-dropdown-item">
+                        <Link style={{ textDecoration: 'none' }} to='/view-exam'>
+                        <h6 className="dashboard-nav-dropdown-item">
                             <i className="fas fa-eye mr2"></i>
                                 View Exam
-                            </a>
+                            </h6>
+                        </Link>
+                        
 
-                        <a className="dashboard-nav-dropdown-item">
-                            <i className="fas fa-pencil-alt mr2"></i>
-                                Update Exam
-                            </a>
-
-                        <a className="dashboard-nav-dropdown-item">
-                            <i className="fas fa-trash mr2"></i>
-                                Delete Exam
-                            </a>
                     </div>
                 </div>
 

@@ -3,7 +3,7 @@ import '../ComponentCSS/SideNavbar.css'
 import { Link } from "react-router-dom"
 import { useState } from "react";
 
-const CreateExam = () => {
+const UpdateExam = () => {
     const [title, settitle] = useState('');
     const [duration, setduration] = useState();
     const [marks, setmarks] = useState();
@@ -26,6 +26,29 @@ const CreateExam = () => {
         alert("Exam created successfully");
     }
 
+    let [exams, setexams] = useState([]);
+    const [userid, setuserid] = useState(201);
+    const GetExam = async () => {
+
+        const res = await fetch('http://localhost:8080/api/exam/ve/' + userid, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+
+            },
+
+        })
+
+        const data = await res.json();
+        setexams(data);
+        // alert("Exam created successfully");
+        // console.log(data);
+
+
+    }
+    useEffect(() => {
+        GetExam()
+    }, [])
     return (
         <div className='dashboard'>
             <SideNavbar />
@@ -89,6 +112,12 @@ const CreateExam = () => {
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
+                            
                                 <div className="mh7">
                                 <Link to='/dashboard' style={{ textDecoration: 'none' }}>
                                     <button
@@ -107,4 +136,4 @@ const CreateExam = () => {
         </div>
     )
 }
-export default CreateExam
+export default UpdateExam

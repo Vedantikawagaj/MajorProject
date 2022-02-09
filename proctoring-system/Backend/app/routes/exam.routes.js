@@ -18,7 +18,7 @@ module.exports = function(app) {
     "/api/exam/ge/:uid",
     controller.generateExam
   );
-  app.get("/api/exam/ve", controller.viewExam);
+  app.get("/api/exam/ve/:uid", controller.viewExam);
   app.delete("/api/exam/de/:examid", controller.deleteExam);
   app.put("/api/exam/ue/:examid", controller.updateExam);
   app.get("/api/question/vq/:examid", controller.viewQuestion);

@@ -8,6 +8,7 @@ import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import SideNavbar from './Components/SideNavbar';
 import Dashboard from './Components/Dashboard';
 import CreateExam from './Components/CreateExam';
+import ViewExam from './Components/ViewExam';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/register' element={ <RegisterPage/>}/>
         <Route path='/dashboard' element={ <Dashboard/>}/>
         <Route path='/create-exam' element={ <CreateExam/>}/>
+        <Route path='/view-exam' element={ <ViewExam/>}/>
       </Routes>
     </div>
       

@@ -37,14 +37,17 @@ exports.generateExam = (req, res) => {
 };
 
 exports.viewExam = (req, res) => {
-    
-    Exam.find().then((data)=>{
+    const uid = req.params.uid;
+    Exam.find({userid: uid})
+    .then((data)=>{
         if(!data)
             res.status(404).send({
                 message: "No Exams found"
             })
         else{
+            console.log(data[2].duration.getUTCMinutes());
             res.status(200).send(data);
+            
         }    
     }).catch((err)=>{
         res.status(500).send({
