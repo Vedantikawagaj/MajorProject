@@ -15,7 +15,7 @@ module.exports = function(app) {
     controller.generateQuestion
   );
   app.post(
-    "/api/exam/ge",
+    "/api/exam/ge/:uid",
     controller.generateExam
   );
   app.get("/api/exam/ve", controller.viewExam);

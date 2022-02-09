@@ -194,11 +194,12 @@ h1, .h1 {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    color: #515151;
+    color: #dbdbdb;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    cursor:default;
 }
 
 .brand-logo:focus, .brand-logo:active, .brand-logo:hover {
@@ -237,6 +238,7 @@ h1, .h1 {
     align-items: center;
     letter-spacing: 0.02em;
     transition: ease-out 0.5s;
+    cursor: pointer;
 }
 
 .dashboard-nav-item i {
@@ -437,4 +439,16 @@ h1, .h1 {
     .dashboard-compact .dashboard-toolbar {
         left: 0;
     }
+}
+
+.btn-coloe{
+    background-color: #2f2e41;
+    color: white;
+}
+.btn-coloe:hover{
+    color: white;
+    
+}
+.linking{
+    text-decoration: none;
 }

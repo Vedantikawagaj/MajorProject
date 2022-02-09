@@ -107,7 +107,7 @@ const Register = () => {
                                 </div>
 
 
-                                <Link to='/login'>
+                                <Link style={{ textDecoration: 'none' }} to='/login'>
                                     <button
                                         type="submit"
                                         class="btn btn-primary btn-lg btn-block"
@@ -116,7 +116,7 @@ const Register = () => {
                                         </button>
                                 </Link>
                                 <p class="small fw-bold mt-2 pt-1 mb-0 f5">Already have an account?
-                                <Link to='/login'>
+                                <Link style={{ textDecoration: 'none' }} to='/login'>
                                         <a href="#!"
                                             class="link-danger">Sign In</a>
                                     </Link>

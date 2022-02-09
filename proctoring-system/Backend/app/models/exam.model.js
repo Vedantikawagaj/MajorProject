@@ -4,7 +4,7 @@ var autoIncrementuser = require('mongoose-auto-increment');
 autoIncrementuser.initialize(mongoose);
 
 var examschema = new mongoose.Schema({
-  // examid: Number,
+  userid:Number,
   title: String,
   duration: Date,
   totalMarks: Number

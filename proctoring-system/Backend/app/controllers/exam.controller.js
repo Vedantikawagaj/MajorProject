@@ -6,8 +6,9 @@ const Question = db.question;
 
 exports.generateExam = (req, res) => {
     console.log(req.body);
+    const uid = req.params.uid;
     const exam = new Exam({
-        // examid: req.body.examid,
+        userid: uid,
         title: req.body.title,
         duration: req.body.duration,
         totalMarks: req.body.totalMarks

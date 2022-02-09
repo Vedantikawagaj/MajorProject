@@ -26,12 +26,12 @@ const SideNavbar = () => {
     return (
 
         <div className="dashboard-nav">
-            <header><a className="menu-toggle"><i className="fas fa-bars"></i></a>
-                <a className="brand-logo">
-                    <i className="	fas fa-bullseye"></i> <span>PROCTOROR</span></a></header>
+            <header>
+                <h4 className="brand-logo grow">
+                    <i className="	fas fa-bullseye"></i> <span>PROCTOROR</span></h4></header>
 
             <nav className="dashboard-nav-list">
-                <Link to='/dashboard'>
+                <Link style={{ textDecoration: 'none' }} to='/dashboard'>
                     <h6 className="dashboard-nav-item">
                         <i className="fas fa-home"></i>
                         Dashboard
@@ -55,7 +55,7 @@ const SideNavbar = () => {
                         </a>
 
                     <div className='dashboard-nav-dropdown-menu'>
-                        <Link to='/create-exam'>
+                        <Link style={{ textDecoration: 'none' }} to='/create-exam'>
                             <h6 className="dashboard-nav-dropdown-item">
                                 <i className="fas fa-plus mr2"></i>
                                 Create Exam

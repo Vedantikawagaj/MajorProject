@@ -16,14 +16,14 @@ export default class Navbar extends Component {
                                 <a className="nav-link grow-large" href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <Link to='/register'>
+                                <Link style={{ textDecoration: 'none' }} to='/register'>
                                     <a className="nav-link grow-large" href="#">Register</a>
                                 </Link>
 
                             </li>
                             <li className="nav-item">
 
-                                <Link to='/login'>
+                                <Link style={{ textDecoration: 'none' }} to='/login'>
                                     <a className="nav-link grow-large" href="#">Login</a>
                                 </Link>
                             </li>

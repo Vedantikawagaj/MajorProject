@@ -86,12 +86,12 @@ const Login=()=>{
                                     </div>
                                     <a href="#!">Forgot password?</a>
                                 </div>
-                                <Link to='/dashboard'>
+                                <Link style={{ textDecoration: 'none' }} to='/dashboard'>
 
                                 <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</button>
                                 </Link>
                                 <p className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account? 
-                                <Link to='/register'>
+                                <Link style={{ textDecoration: 'none' }} to='/register'>
                                 <a 
                                     className="link-danger">Register</a>
                             </Link>
