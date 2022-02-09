@@ -18,7 +18,7 @@ const CreateExam = () => {
             body: JSON.stringify({
                 "title": title,
                 "duration": duration * 1000*60,
-                "marks": marks
+                "totalMarks": marks
             })
         })
 
@@ -34,16 +34,16 @@ const CreateExam = () => {
 
                 <div className='dashboard-content'>
                     <div className='container'>
-                        <div class="divider d-flex align-items-center my-4">
-                            <p class="text-center fw-bold mx-2 mb-0  f4">Create New Exam</p>
+                        <div className="divider d-flex align-items-center my-4">
+                            <p className="text-center fw-bold mx-2 mb-0  f4">Create New Exam</p>
                         </div>
                         <form>
-                            <div class="form-outline mb-4 ">
-                                <h5 class="tl pl1 ">Enter Title for Exam:</h5>
+                            <div className="form-outline mb-4 ">
+                                <h5 className="tl pl1 ">Enter Title for Exam:</h5>
                                 <input
                                     type="text"
                                     id="form1Example13"
-                                    class="form-control form-control-lg "
+                                    className="form-control form-control-lg "
                                     placeholder="Title"
                                     value={title}
                                     onChange={(val) => {
@@ -53,14 +53,14 @@ const CreateExam = () => {
                                 />
 
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-outline">
-                                        <h5 class="tl pl1 ">Enter Duration for Exam(mins):</h5>
+                            <div className="row">
+                                <div className="col-md-6 mb-4">
+                                    <div className="form-outline">
+                                        <h5 className="tl pl1 ">Enter Duration for Exam(mins):</h5>
                                         <input
                                             type="number"
                                             id="form3Example1m"
-                                            class="form-control form-control-lg"
+                                            className="form-control form-control-lg"
                                             placeholder="Duration"
                                             value={duration}
                                             min={1}
@@ -71,13 +71,13 @@ const CreateExam = () => {
                                         />
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-outline">
-                                        <h5 class="tl pl1 ">Enter Total Marks for Exam:</h5>
+                                <div className="col-md-6 mb-4">
+                                    <div className="form-outline">
+                                        <h5 className="tl pl1 ">Enter Total Marks for Exam:</h5>
                                         <input
                                             type="number"
                                             id="form3Example1n"
-                                            class="form-control form-control-lg"
+                                            className="form-control form-control-lg"
                                             placeholder="Marks"
                                             value={marks}
                                             min={0}
@@ -93,7 +93,7 @@ const CreateExam = () => {
                                 <Link to='/dashboard' style={{ textDecoration: 'none' }}>
                                     <button
                                         type="submit"
-                                        class="btn btn-coloe btn-lg btn-block justify-center items-center-l grow"
+                                        className="btn btn-coloe btn-lg btn-block justify-center items-center-l grow"
                                         onClick={handleExamCreation}
                                     >
                                         Create Exam

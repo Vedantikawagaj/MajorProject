@@ -45,7 +45,29 @@ exports.viewExam = (req, res) => {
                 message: "No Exams found"
             })
         else{
-            console.log(data[2].duration.getUTCMinutes());
+            // console.log(data[2].duration.getUTCMinutes());
+            res.status(200).send(data);
+            
+        }    
+    }).catch((err)=>{
+        console.log(err)
+        res.status(500).send({
+            message: "Server error"
+        })
+    })
+    
+};
+
+exports.viewParticularExam = (req, res) => {
+    const eid = req.params.eid;
+    Exam.find({_id: eid})
+    .then((data)=>{
+        if(!data)
+            res.status(404).send({
+                message: "No Exams found"
+            })
+        else{
+            // console.log(data[2].duration.getUTCMinutes());
             res.status(200).send(data);
             
         }    

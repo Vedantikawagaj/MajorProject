@@ -9,6 +9,8 @@ import SideNavbar from './Components/SideNavbar';
 import Dashboard from './Components/Dashboard';
 import CreateExam from './Components/CreateExam';
 import ViewExam from './Components/ViewExam';
+import UpdateExam from './Components/UpdateExam';
+import DeleteExam from './Components/Deleteexam';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard/>}/>
         <Route path='/create-exam' element={ <CreateExam/>}/>
         <Route path='/view-exam' element={ <ViewExam/>}/>
+        <Route path='/update-exam/:eid' element={ <UpdateExam/>}/>
+        <Route path='/delete-exam/:eid' element={ <DeleteExam/>}/>
       </Routes>
     </div>
       

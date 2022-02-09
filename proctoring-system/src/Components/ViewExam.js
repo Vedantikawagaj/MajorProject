@@ -34,43 +34,43 @@ const ViewExam = () => {
 
 
                 <div className='dashboard-content'>
-                    <div class="container">
-                        <div class="divider d-flex align-items-center my-4">
-                            <p class="text-center fw-bold mx-2 mb-0  f4">Exam Section</p>
+                    <div className="container">
+                        <div className="divider d-flex align-items-center my-4">
+                            <p className="text-center fw-bold mx-2 mb-0  f4">Exam Section</p>
                         </div>
-                        <div class="row">
+                        <div className="row">
                             {
                                 // console.log(exams)
                                 exams && exams.map((item, idx) => {
                                     return (
-                                        <div class="col-lg-4">
-                                            <div class="card card-margin">
-                                                {/* <div class="card-header no-border">
-                                                    <h5 class="card-title">MOM</h5>
+                                        <div className="col-lg-4" key={idx}>
+                                            <div className="card card-margin">
+                                                {/* <div className="card-header no-border">
+                                                    <h5 className="card-title">MOM</h5>
                                                 </div> */}
-                                                <div class="card-body pt-0">
-                                                    <div class="widget-49">
-                                                        <div class="widget-49-title-wrapper pt3">
-                                                            <div class="widget-49-date-primary">
-                                                                <span class="widget-49-date-day">09</span>
-                                                                <span class="widget-49-date-month">apr</span>
+                                                <div className="card-body pt-0">
+                                                    <div className="widget-49">
+                                                        <div className="widget-49-title-wrapper pt3">
+                                                            <div className="widget-49-date-primary">
+                                                                <span className="widget-49-date-day">09</span>
+                                                                <span className="widget-49-date-month">apr</span>
                                                             </div>
-                                                            <div class="widget-49-meeting-info">
-                                                                <span class="widget-49-pro-title b f-6">{item.title}</span>
+                                                            <div className="widget-49-meeting-info">
+                                                                <span className="widget-49-pro-title b f-6">{item.title}</span>
                                                                 {/* https://www.bootdey.com/snippets/view/events-card-widget#html */}
                                                             </div>
                                                         </div>
 
-                                                        <div class="widget-49-meeting-info ma3">
-                                                            <span class="widget-49-pro-title">
+                                                        <div className="widget-49-meeting-info ma3">
+                                                            <span className="widget-49-pro-title">
                                                                 <span className="b pr1">
                                                                     Duration:-
                                                                 </span>
                                                                 {item.duration.toString().slice(11, 16)}
                                                             </span>
                                                         </div>
-                                                        <div class="widget-49-meeting-info ma3">
-                                                            <span class="widget-49-pro-title">
+                                                        <div className="widget-49-meeting-info ma3">
+                                                            <span className="widget-49-pro-title">
                                                                 <span className="b pr1">
                                                                     Total Marks:-
                                                                 </span>
@@ -81,26 +81,23 @@ const ViewExam = () => {
                                                         <Link to='/dashboard' style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"
-                                                                class="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            // onClick={handleExamCreation}
+                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 View Questions
                                     </button>
                                                         </Link>
-                                                        <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                                                        <Link to={`/update-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"
-                                                                class="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            // onClick={handleExamCreation}
+                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 Update Exam
                                     </button>
                                                         </Link>
-                                                        <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                                                        <Link to={`/delete-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"
-                                                                class="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            // onClick={handleExamCreation}
+                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 Delete Exam
                                     </button>

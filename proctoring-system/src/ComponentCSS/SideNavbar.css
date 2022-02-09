@@ -452,3 +452,24 @@ h1, .h1 {
 .linking{
     text-decoration: none;
 }
+
+
+.btn-proceed{
+    background-color: rgb(58, 184, 0);
+    color: white;
+}
+
+.btn-proceed:hover{
+    color: white;
+    
+}
+
+.btn-cancel{
+    background-color: rgb(226, 1, 1);
+    color: white;
+}
+
+.btn-cancel:hover{
+    color: white;
+    
+}
