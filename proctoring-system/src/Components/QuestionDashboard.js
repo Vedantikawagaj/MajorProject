@@ -84,7 +84,7 @@ const QuestionDashboard = () => {
                                 <div className="row">
                                     <div className="col-md-6 mb-4">
                                     <div className="mh4 mv2">
-                                            <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                                            <Link to={`/update-question/${item._id}/${eid}`} style={{ textDecoration: 'none' }}>
                                                 <button
                                                     type="submit"
                                                     className="btn btn-update btn-lg btn-block justify-center items-center-l grow"
@@ -100,7 +100,7 @@ const QuestionDashboard = () => {
 
                                     <div className="col-md-6 mb-4">
                                     <div className="mh4 mv2">
-                                            <Link to='/view-exam' style={{ textDecoration: 'none' }}>
+                                            <Link to={`/delete-question/${item._id}`} style={{ textDecoration: 'none' }}>
                                                 <button
                                                     type="submit"
                                                     className="btn btn-cancel btn-lg btn-block justify-center items-center-l grow"

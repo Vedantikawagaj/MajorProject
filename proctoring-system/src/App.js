@@ -15,6 +15,8 @@ import ExamDashboard from './Components/ExamDashboard';
 import AddQuestion from './Components/AddQuestion';
 import ViewQuestions from './Components/ViewQuestions';
 import QuestionDashboard from './Components/QuestionDashboard';
+import UpdateQuestion from './Components/UpdateQuestion';
+import DeleteQuestion from './Components/DeleteQuestion';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path='/add-question/:eid' element={ <AddQuestion/>}/>
         <Route path='/view-questions' element={ <ViewQuestions/>}/>
         <Route path='/question-dashboard/:eid' element={ <QuestionDashboard/>}/>
+        <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
+        <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
       </Routes>
     </div>
       

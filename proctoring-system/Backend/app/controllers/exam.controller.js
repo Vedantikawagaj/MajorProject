@@ -235,3 +235,24 @@ exports.updateQuestion = (req, res) => {
     // Exam.findByIdAndRemove(examid)
     
 };
+
+exports.viewParticularQuestion = (req, res) => {
+    const qid = req.params.qid;
+    Question.find({_id: qid})
+    .then((data)=>{
+        if(!data)
+            res.status(404).send({
+                message: "No question found"
+            })
+        else{
+            // console.log(data[2].duration.getUTCMinutes());
+            res.status(200).send(data);
+            
+        }    
+    }).catch((err)=>{
+        res.status(500).send({
+            message: "Server error"
+        })
+    })
+    
+};

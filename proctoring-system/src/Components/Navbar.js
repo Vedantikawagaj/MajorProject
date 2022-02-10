@@ -6,25 +6,25 @@ export default class Navbar extends Component {
         return (
             <div>
                 <nav className="navbar navbar-dark bg navbar-expand-lg">
-                    <a className="navbar-brand  ml2 grow-large" href="#">Proctoror</a>
+                    <h5 className="navbar-brand  ml2 grow-large">Proctoror</h5>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <a className="nav-link grow-large" href="#">Home</a>
+                                <h5 className="nav-link grow-large">Home</h5>
                             </li>
                             <li className="nav-item">
                                 <Link style={{ textDecoration: 'none' }} to='/register'>
-                                    <a className="nav-link grow-large" href="#">Register</a>
+                                    <h5 className="nav-link grow-large" >Register</h5>
                                 </Link>
 
                             </li>
                             <li className="nav-item">
 
                                 <Link style={{ textDecoration: 'none' }} to='/login'>
-                                    <a className="nav-link grow-large" href="#">Login</a>
+                                    <h5 className="nav-link grow-large">Login</h5>
                                 </Link>
                             </li>
 
@@ -32,11 +32,11 @@ export default class Navbar extends Component {
                         <div className="navbar-text text-end mr2">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link grow-large" href="#">Contact Us</a>
+                                    <h5 className="nav-link grow-large">Contact Us</h5>
                                 </li>
                                 <li className="nav-item">
 
-                                    <a className="nav-link grow-large" href="#">FAQs</a>
+                                    <h5 className="nav-link grow-large">FAQs</h5>
                                 </li>
 
 

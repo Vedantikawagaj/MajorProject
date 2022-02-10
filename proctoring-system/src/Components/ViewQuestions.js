@@ -83,22 +83,7 @@ const ViewQuestions = () => {
                                                                 View Questions
                                     </button>
                                                         </Link>
-                                                        <Link to={`/update-exam/${item._id}`} style={{ textDecoration: 'none' }}>
-                                                            <button
-                                                                type="submit"
-                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            >
-                                                                Update Questions
-                                    </button>
-                                                        </Link>
-                                                        <Link to={`/delete-exam/${item._id}`} style={{ textDecoration: 'none' }}>
-                                                            <button
-                                                                type="submit"
-                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            >
-                                                                Delete Questions
-                                    </button>
-                                                        </Link>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>

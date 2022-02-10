@@ -22,7 +22,14 @@ const Login=()=>{
          })
 
          const data=await res.json();
-         alert(data.message);
+         if(data.status==200)
+         {
+             alert(data.message)
+             window.open('/dashboard');
+         }
+         else{
+            alert(data.message)
+         }
          console.log(data);
     }
 
@@ -72,30 +79,17 @@ const Login=()=>{
 
                                 </div>
 
-                                <div className="d-flex justify-content-around align-items-center mb-4">
-
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            value=""
-                                            id="form1Example3"
-                                            checked
-                                        />
-                                        <label className="form-check-label"> Remember me </label>
-                                    </div>
-                                    <a href="#!">Forgot password?</a>
-                                </div>
-                                <Link style={{ textDecoration: 'none' }} to='/dashboard'>
+                               
+                                {/* <Link style={{ textDecoration: 'none' }} to='/dashboard'> */}
 
                                 <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</button>
-                                </Link>
-                                <p className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account? 
+                                {/* </Link> */}
+                                <h5 className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account? 
                                 <Link style={{ textDecoration: 'none' }} to='/register'>
-                                <a 
-                                    className="link-danger">Register</a>
+                                <h5 
+                                    className="link-danger">Register</h5>
                             </Link>
-                                </p>
+                                </h5>
 
 
 

@@ -83,7 +83,8 @@ exports.signin = (req, res) => {
       }
 
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).send({ message: "User Not found.",
+        status:404 });
       }
 
       var passwordIsValid = bcrypt.compareSync(
@@ -94,7 +95,8 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Invalid Password!"
+          message: "Invalid Password!",
+          status:401
         });
       }
 
@@ -115,7 +117,8 @@ exports.signin = (req, res) => {
         lastname: user.lastname,
         email: user.email,
         roles: authorities,
-        accessToken: token
+        accessToken: token,
+        status:200
       });
     });
 };
