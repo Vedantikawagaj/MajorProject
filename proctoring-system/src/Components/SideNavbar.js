@@ -7,11 +7,12 @@ import Dashboard from './Dashboard';
 const SideNavbar = () => {
     var [classname, setclassname] = useState("dashboard-nav-dropdown");
 
-    var [show, setshow] = useState(false);
+    var [showExam, setshowExam] = useState(false);
+    var [showQuestion, setshowQuestion] = useState(false);
     // var [showDashboard, setshowDashboard] = useState(true)
-    const handleshow = () => {
-        setshow(!show);
-        if (show) {
+    const toggleExam = () => {
+        setshowExam(!showExam);
+        if (showExam) {
             setclassname("dashboard-nav-dropdown show ")
         }
         else {
@@ -19,7 +20,16 @@ const SideNavbar = () => {
         }
         console.log(classname);
     }
-
+    const toggleQuestion = () => {
+        setshowQuestion(!showQuestion);
+        if (showQuestion) {
+            setclassname("dashboard-nav-dropdown show ")
+        }
+        else {
+            setclassname("dashboard-nav-dropdown ")
+        }
+        console.log(classname);
+    }
     // const handleDashboard = () => {
     //     setshow(!show);
     // }
@@ -49,7 +59,7 @@ const SideNavbar = () => {
                     </a>
 
                 <div className={classname}>
-                    <a onClick={handleshow} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+                    <a onClick={toggleExam} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
                         <i className="fas fa-plus"></i>
                             Examination
                         </a>
@@ -65,6 +75,30 @@ const SideNavbar = () => {
                         <h6 className="dashboard-nav-dropdown-item">
                             <i className="fas fa-eye mr2"></i>
                                 View Exam
+                            </h6>
+                        </Link>
+                        
+
+                    </div>
+                </div>
+
+                <div className={classname}>
+                    <a onClick={toggleQuestion} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+                        <i className="fas fa-plus"></i>
+                            Questions
+                        </a>
+
+                    <div className='dashboard-nav-dropdown-menu'>
+                        <Link style={{ textDecoration: 'none' }} to='/exam-dashboard'>
+                            <h6 className="dashboard-nav-dropdown-item">
+                                <i className="fas fa-plus mr2"></i>
+                                Add Question
+                            </h6>
+                        </Link>
+                        <Link style={{ textDecoration: 'none' }} to='/view-questions'>
+                        <h6 className="dashboard-nav-dropdown-item">
+                            <i className="fas fa-eye mr2"></i>
+                                View Questions
                             </h6>
                         </Link>
                         

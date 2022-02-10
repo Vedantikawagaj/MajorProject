@@ -3,7 +3,7 @@ import '../ComponentCSS/SideNavbar.css'
 import SideNavbar from './SideNavbar'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-const ViewQuestions = () => {
+const ExamDashboard = () => {
     let [exams, setexams] = useState([]);
     const [userid, setuserid] = useState(201);
     const handleViewExam = async () => {
@@ -78,30 +78,15 @@ const ViewQuestions = () => {
                                                             </span>
                                                         </div>
 
-                                                        <Link to={`/question-dashboard/${item._id}`} style={{ textDecoration: 'none' }}>
+                                                        <Link to={`/add-question/${item._id}`}  style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"
                                                                 className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
-                                                                View Questions
+                                                                Add Question
                                     </button>
                                                         </Link>
-                                                        <Link to={`/update-exam/${item._id}`} style={{ textDecoration: 'none' }}>
-                                                            <button
-                                                                type="submit"
-                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            >
-                                                                Update Questions
-                                    </button>
-                                                        </Link>
-                                                        <Link to={`/delete-exam/${item._id}`} style={{ textDecoration: 'none' }}>
-                                                            <button
-                                                                type="submit"
-                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            >
-                                                                Delete Questions
-                                    </button>
-                                                        </Link>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,4 +104,4 @@ const ViewQuestions = () => {
     )
 }
 
-export default ViewQuestions
+export default ExamDashboard

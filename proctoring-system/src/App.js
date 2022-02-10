@@ -11,6 +11,10 @@ import CreateExam from './Components/CreateExam';
 import ViewExam from './Components/ViewExam';
 import UpdateExam from './Components/UpdateExam';
 import DeleteExam from './Components/Deleteexam';
+import ExamDashboard from './Components/ExamDashboard';
+import AddQuestion from './Components/AddQuestion';
+import ViewQuestions from './Components/ViewQuestions';
+import QuestionDashboard from './Components/QuestionDashboard';
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
         <Route path='/view-exam' element={ <ViewExam/>}/>
         <Route path='/update-exam/:eid' element={ <UpdateExam/>}/>
         <Route path='/delete-exam/:eid' element={ <DeleteExam/>}/>
+        <Route path='/exam-dashboard' element={ <ExamDashboard/>}/>
+        <Route path='/add-question/:eid' element={ <AddQuestion/>}/>
+        <Route path='/view-questions' element={ <ViewQuestions/>}/>
+        <Route path='/question-dashboard/:eid' element={ <QuestionDashboard/>}/>
       </Routes>
     </div>
       

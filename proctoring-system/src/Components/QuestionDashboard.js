@@ -1,0 +1,77 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import '../ComponentCSS/QuestionDashboard.css'
+import '../ComponentCSS/SideNavbar.css'
+import SideNavbar from './SideNavbar'
+const QuestionDashboard = () => {
+    let { eid } = useParams();
+    let [questions, setquestions] = useState([]);
+    const handleViewQuestion = async () => {
+
+        const res = await fetch('http://localhost:8080/api/question/vq/' + eid, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+
+            },
+
+        })
+
+        const data = await res.json();
+        setquestions(data);
+        // alert("Exam created successfully");
+        // console.log(data);
+
+
+    }
+    useEffect(() => {
+        handleViewQuestion()
+    }, [])
+    return (
+
+        <div className='dashboard'>
+            <SideNavbar />
+            <div className='dashboard-app'>
+                <div className='dashboard-content'>
+                    <div className='container'>
+                        <div className="divider d-flex align-items-center my-4">
+                            <p className="text-center fw-bold mx-2 mb-0  f4">Create New Exam</p>
+                        </div>
+
+                       { questions.map((item,idx)=>{
+                           return(
+
+                          
+                       <div class="container1 mt-sm-5 my-1" key={idx}>
+                           
+                            <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                <div class="py-2 mb3 b f4"><b>Q. {item.question}</b></div>
+                                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                    <label class="options">{item.a}  <span class="checkmark"></span>
+                                    </label>
+                                    <label class="options">{item.b}  <span class="checkmark"></span>
+                                    </label>
+                                    <label class="options">{item.c}  <span class="checkmark"></span>
+                                    </label>
+                                    <label class="options">{item.d}  <span class="checkmark"></span>
+                                    </label>
+                                    <label class="options">{item.ans} <span className="h5">Correct Answer: </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-3">
+                                <div id="prev"> <button class="btn btn-primary">Delete</button> </div>
+                                <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Update</button> </div>
+                            </div>
+                        </div>
+                     )
+                    })    
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default QuestionDashboard
