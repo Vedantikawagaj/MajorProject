@@ -1,9 +1,9 @@
 import React, { Component, useState } from 'react'
 import '../ComponentCSS/Login.css'
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const Login=()=>{
-    
+    let history=useNavigate();
     const [email,setemail]=useState('');
     const [pw,setpw]=useState('');
     const handleLogin= async () => {
@@ -22,17 +22,22 @@ const Login=()=>{
          })
 
          const data=await res.json();
-         if(data.status==200)
-         {
-             alert(data.message)
-             window.open('/dashboard');
-         }
-         else{
-            alert(data.message)
-         }
-         console.log(data);
+         navigate(data);
+         
     }
 
+    const navigate=(data)=>{
+        console.log(data);
+        if(data.status==200)
+        {
+            
+            history('/dashboard');
+        }
+        // else{
+        //    alert(data.message)
+        // }
+        
+    }
     return (
         <div>
             <section className="vh-100">

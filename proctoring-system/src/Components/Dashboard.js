@@ -12,11 +12,11 @@ const Dashboard = () => {
                     <div className='card'>
 
                         <div className='card-header'>
-                            <h1>Welcome back Jim</h1>
+                            <h1>Welcome back Vedantika</h1>
                         </div>
 
                         <div className='card-body'>
-                            <p>Your account type is: Administrator</p>
+                            <p>Your account type is: User</p>
                         </div>
                     </div>
                 </div>
