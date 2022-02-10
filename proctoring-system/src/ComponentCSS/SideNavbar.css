@@ -454,12 +454,12 @@ h1, .h1 {
 }
 
 
-.btn-proceed{
+.btn-update{
     background-color: rgb(58, 184, 0);
     color: white;
 }
 
-.btn-proceed:hover{
+.btn-update:hover{
     color: white;
     
 }

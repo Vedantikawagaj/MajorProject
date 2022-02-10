@@ -5,30 +5,30 @@ import '../ComponentCSS/SideNavbar.css'
 import Dashboard from './Dashboard';
 // import '../ComponentJS/SideNavbarJS'
 const SideNavbar = () => {
-    var [classname, setclassname] = useState("dashboard-nav-dropdown");
-
+    var [examclassname, setexamclassname] = useState("dashboard-nav-dropdown");
+    var [quesclassname, setquesclassname] = useState("dashboard-nav-dropdown");
     var [showExam, setshowExam] = useState(false);
     var [showQuestion, setshowQuestion] = useState(false);
     // var [showDashboard, setshowDashboard] = useState(true)
     const toggleExam = () => {
         setshowExam(!showExam);
         if (showExam) {
-            setclassname("dashboard-nav-dropdown show ")
+            setexamclassname("dashboard-nav-dropdown show ")
         }
         else {
-            setclassname("dashboard-nav-dropdown ")
+            setexamclassname("dashboard-nav-dropdown ")
         }
-        console.log(classname);
+        console.log(examclassname);
     }
     const toggleQuestion = () => {
         setshowQuestion(!showQuestion);
         if (showQuestion) {
-            setclassname("dashboard-nav-dropdown show ")
+            setquesclassname("dashboard-nav-dropdown show ")
         }
         else {
-            setclassname("dashboard-nav-dropdown ")
+            setquesclassname("dashboard-nav-dropdown ")
         }
-        console.log(classname);
+        console.log(quesclassname);
     }
     // const handleDashboard = () => {
     //     setshow(!show);
@@ -58,7 +58,7 @@ const SideNavbar = () => {
                         Monitor Exam
                     </a>
 
-                <div className={classname}>
+                <div className={examclassname}>
                     <a onClick={toggleExam} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
                         <i className="fas fa-plus"></i>
                             Examination
@@ -82,7 +82,7 @@ const SideNavbar = () => {
                     </div>
                 </div>
 
-                <div className={classname}>
+                <div className={quesclassname}>
                     <a onClick={toggleQuestion} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
                         <i className="fas fa-plus"></i>
                             Questions

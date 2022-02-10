@@ -19,9 +19,6 @@ const ViewQuestions = () => {
 
         const data = await res.json();
         setexams(data);
-        // alert("Exam created successfully");
-        // console.log(data);
-
 
     }
     useEffect(() => {
