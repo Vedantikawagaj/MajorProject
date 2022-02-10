@@ -3,7 +3,7 @@ import '../ComponentCSS/Login.css'
 import {Link, useNavigate} from 'react-router-dom';
 
 const Login=()=>{
-    let history=useNavigate();
+    // let history=useNavigate();
     const [email,setemail]=useState('');
     const [pw,setpw]=useState('');
     const handleLogin= async () => {
@@ -22,22 +22,22 @@ const Login=()=>{
          })
 
          const data=await res.json();
-         navigate(data);
+        //  navigate(data);
          
     }
 
-    const navigate=(data)=>{
-        console.log(data);
-        if(data.status==200)
-        {
+    // const navigate=(data)=>{
+    //     console.log(data);
+    //     if(data.status==200)
+    //     {
             
-            history('/dashboard');
-        }
+    //         history('/dashboard');
+    //     }
         // else{
         //    alert(data.message)
         // }
         
-    }
+    // }
     return (
         <div>
             <section className="vh-100">
@@ -85,10 +85,10 @@ const Login=()=>{
                                 </div>
 
                                
-                                {/* <Link style={{ textDecoration: 'none' }} to='/dashboard'> */}
+                                <Link style={{ textDecoration: 'none' }} to='/dashboard'>
 
                                 <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</button>
-                                {/* </Link> */}
+                                </Link>
                                 <h5 className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account? 
                                 <Link style={{ textDecoration: 'none' }} to='/register'>
                                 <h5 

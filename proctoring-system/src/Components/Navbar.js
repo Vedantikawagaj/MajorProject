@@ -23,7 +23,7 @@ export default class Navbar extends Component {
                             </li>
                             <li className="nav-item">
 
-                                <Link style={{ textDecoration: 'none' }} to='/login'>
+                                <Link style={{ textDecoration: 'none' }} to='/'>
                                     <h5 className="nav-link grow-large">Login</h5>
                                 </Link>
                             </li>
