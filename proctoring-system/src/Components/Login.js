@@ -1,43 +1,42 @@
 import React, { Component, useState } from 'react'
 import '../ComponentCSS/Login.css'
-import {Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Login=()=>{
-    // let history=useNavigate();
-    const [email,setemail]=useState('');
-    const [pw,setpw]=useState('');
-    const handleLogin= async () => {
+const Login = () => {
+    let history = useNavigate();
+    const [email, setemail] = useState('');
+    const [pw, setpw] = useState('');
+    const [message, setmessage] = useState("")
+    const [status, setstatus] = useState()
+    const handleLogin = async () => {
         // console.log(fn + ln + email + pw);
         // alert(fn + ln + email + pw);
-         const res=await fetch('http://localhost:8080/api/auth/signin',{
-             method:'post',
-             headers: {
-                 'Content-Type': 'application/json'
+        const res = await fetch('http://localhost:8080/api/auth/signin', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
 
-             },
-             body: JSON.stringify({
+            },
+            body: JSON.stringify({
                 "email": email,
                 "password": pw,
-             })
-         })
+            })
+        })
 
-         const data=await res.json();
-        //  navigate(data);
-         
+        const data = await res.json(); console.log(data);
+        setmessage(data.message);
+        setstatus(data.status);
+        if (data.status == 200) {
+            alert(data.message)
+            history('/dashboard');
+        }
+        else {
+            alert(data.message)
+        }
+
     }
 
-    // const navigate=(data)=>{
-    //     console.log(data);
-    //     if(data.status==200)
-    //     {
-            
-    //         history('/dashboard');
-    //     }
-        // else{
-        //    alert(data.message)
-        // }
-        
-    // }
+    
     return (
         <div>
             <section className="vh-100">
@@ -54,46 +53,46 @@ const Login=()=>{
                             <form>
                                 <div className="form-outline mb-4 ">
 
-                                    <input 
-                                    type="email" 
-                                    id="form1Example13" 
-                                    className="form-control form-control-md " 
-                                    placeholder="Email address" 
-                                    value={email}
-                                                onChange={(val)=>{
-                                                    setemail(val.target.value)
+                                    <input
+                                        type="email"
+                                        id="form1Example13"
+                                        className="form-control form-control-md "
+                                        placeholder="Email address"
+                                        value={email}
+                                        onChange={(val) => {
+                                            setemail(val.target.value)
 
-                                                }}
+                                        }}
                                     />
 
                                 </div>
 
                                 <div className="form-outline mb-4">
-                                    <input 
-                                    type="password" 
-                                    id="form1Example23" 
-                                    className="form-control form-control-md" 
-                                    placeholder="Password" 
-                                    
-                                    value={pw}
-                                                onChange={(val)=>{
-                                                    setpw(val.target.value)
+                                    <input
+                                        type="password"
+                                        id="form1Example23"
+                                        className="form-control form-control-md"
+                                        placeholder="Password"
 
-                                                }}
-                                                />
+                                        value={pw}
+                                        onChange={(val) => {
+                                            setpw(val.target.value)
+
+                                        }}
+                                    />
 
                                 </div>
 
-                               
-                                <Link style={{ textDecoration: 'none' }} to='/dashboard'>
 
-                                <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</button>
-                                </Link>
-                                <h5 className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account? 
-                                <Link style={{ textDecoration: 'none' }} to='/register'>
-                                <h5 
-                                    className="link-danger">Register</h5>
-                            </Link>
+                             
+
+                                <div type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</div>
+                    
+                                <h5 className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account?
+                                    <Link style={{ textDecoration: 'none' }} to='/register'>
+                                        <h5
+                                            className="link-danger">Register</h5>
+                                    </Link>
                                 </h5>
 
 
@@ -111,7 +110,7 @@ const Login=()=>{
 
 // export default class Login extends Component {
 //     render() {
-        
+
 //     }
 // }
 export default Login
