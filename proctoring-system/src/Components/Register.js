@@ -6,9 +6,9 @@ const Register = () => {
     const [ln, setln] = useState('');
     const [email, setemail] = useState('');
     const [pw, setpw] = useState('');
+    const [roles, setroles] = useState([]);
     const handleRegister = async () => {
-        // console.log(fn + ln + email + pw);
-        // alert(fn + ln + email + pw);
+        
         const res = await fetch('http://localhost:8080/api/auth/signup', {
             method: 'post',
             headers: {
@@ -20,7 +20,7 @@ const Register = () => {
                 "lastname": ln,
                 "email": email,
                 "password": pw,
-                "roles": ["user"]
+                "roles": roles
             })
         })
 
@@ -30,25 +30,25 @@ const Register = () => {
     }
     return (
         <div>
-            <section class="vh-100">
-                <div class="container py-5 h-100">
-                    <div class="row d-flex align-items-center justify-content-center h-100">
-                        <div class="col-md-8 col-lg-7 col-xl-6">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image" />
+            <section className="vh-100">
+                <div className="container py-5 h-100">
+                    <div className="row d-flex align-items-center justify-content-center h-100">
+                        <div className="col-md-8 col-lg-7 col-xl-6">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" className="img-fluid" alt="Phone image" />
                         </div>
 
-                        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                            <div class="divider d-flex align-items-center my-4">
-                                <p class="text-center fw-bold mx-2 mb-0 text-muted">Create New Account</p>
+                        <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                            <div className="divider d-flex align-items-center my-4">
+                                <p className="text-center fw-bold mx-2 mb-0 text-muted">Create New Account</p>
                             </div>
                             <form>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
+                                <div className="row">
+                                    <div className="col-md-6 mb-4">
+                                        <div className="form-outline">
                                             <input
                                                 type="text"
                                                 id="form3Example1m"
-                                                class="form-control form-control-lg"
+                                                className="form-control form-control-lg"
                                                 placeholder="First Name"
                                                 value={fn}
                                                 onChange={(val) => {
@@ -58,12 +58,12 @@ const Register = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
+                                    <div className="col-md-6 mb-4">
+                                        <div className="form-outline">
                                             <input
                                                 type="text"
                                                 id="form3Example1n"
-                                                class="form-control form-control-lg"
+                                                className="form-control form-control-lg"
                                                 placeholder="Last Name"
                                                 value={ln}
                                                 onChange={(val) => {
@@ -74,13 +74,27 @@ const Register = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="form-outline mb-4 ">
 
-                                <div class="form-outline mb-4 ">
+                                <select className="form-control form-control-lg " name="users" id="users" 
+                                onChange={(val) => {
+                                            setroles(roles.concat(val.target.value.toLowerCase()))
+
+                                        }}>
+                                    <option value="Select User" >Select User</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+
+                                </select>
+
+                                </div>
+                                
+                                <div className="form-outline mb-4 ">
 
                                     <input
                                         type="email"
                                         id="form1Example13"
-                                        class="form-control form-control-lg "
+                                        className="form-control form-control-lg "
                                         placeholder="Email address"
                                         value={email}
                                         onChange={(val) => {
@@ -91,11 +105,11 @@ const Register = () => {
 
                                 </div>
 
-                                <div class="form-outline mb-4">
+                                <div className="form-outline mb-4">
                                     <input
                                         type="password"
                                         id="form1Example23"
-                                        class="form-control form-control-lg"
+                                        className="form-control form-control-lg"
                                         placeholder="Password"
                                         value={pw}
                                         onChange={(val) => {
@@ -110,17 +124,17 @@ const Register = () => {
                                 <Link style={{ textDecoration: 'none' }} to='/'>
                                     <button
                                         type="submit"
-                                        class="btn btn-primary btn-lg btn-block"
+                                        className="btn btn-primary btn-lg btn-block"
                                         onClick={handleRegister}>
                                         Register
                                         </button>
                                 </Link>
-                                <p class="small fw-bold mt-2 pt-1 mb-0 f5">Already have an account?
+                                <h6 className="small fw-bold mt-2 pt-1 mb-0 f5">Already have an account?
                                 <Link style={{ textDecoration: 'none' }} to='/'>
-                                        <a href="#!"
-                                            class="link-danger">Sign In</a>
+                                        <h6
+                                            className="link-danger">Sign In</h6>
                                     </Link>
-                                </p>
+                                </h6>
 
 
 

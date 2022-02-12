@@ -6,8 +6,6 @@ const Login = () => {
     let history = useNavigate();
     const [email, setemail] = useState('');
     const [pw, setpw] = useState('');
-    const [message, setmessage] = useState("")
-    const [status, setstatus] = useState()
     const handleLogin = async () => {
         // console.log(fn + ln + email + pw);
         // alert(fn + ln + email + pw);
@@ -23,15 +21,19 @@ const Login = () => {
             })
         })
 
-        const data = await res.json(); console.log(data);
-        setmessage(data.message);
-        setstatus(data.status);
-        if (data.status == 200) {
+        const data = await res.json(); 
+        const data1 = JSON.stringify(data);
+        
+        if (data.status === 200) {
+            localStorage.setItem('user', data1);
             alert(data.message)
             history('/dashboard');
         }
         else {
-            alert(data.message)
+            
+            alert(data.message);
+            setemail('');
+            setpw('');
         }
 
     }

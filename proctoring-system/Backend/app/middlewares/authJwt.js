@@ -20,7 +20,7 @@ verifyToken = (req, res, next) => {
   });
 };
 
-isAdmin = (req, res, next) => {
+isteacher = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -38,13 +38,13 @@ isAdmin = (req, res, next) => {
         }
 
         for (let i = 0; i < roles.length; i++) {
-          if (roles[i].name === "admin") {
+          if (roles[i].name === "teacher") {
             next();
             return;
           }
         }
 
-        res.status(403).send({ message: "Require Admin Role!" });
+        res.status(403).send({ message: "Require teacher Role!" });
         return;
       }
     );
@@ -53,6 +53,6 @@ isAdmin = (req, res, next) => {
 
 const authJwt = {
   verifyToken,
-  isAdmin
+  isteacher
 };
 module.exports = authJwt;

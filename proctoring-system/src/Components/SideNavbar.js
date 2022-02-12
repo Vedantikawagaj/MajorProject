@@ -48,10 +48,6 @@ const SideNavbar = () => {
                     </h6>
                 </Link>
 
-                <a className="dashboard-nav-item">
-                    <i className="fas fa-user"></i>
-                        Profile
-                    </a>
 
                 <a className="dashboard-nav-item">
                     <i className="fas fa-video"></i>
@@ -84,7 +80,7 @@ const SideNavbar = () => {
 
                 <div className={quesclassname}>
                     <a onClick={toggleQuestion} className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
-                        <i className="fas fa-plus"></i>
+                        <i className="fa fa-question"></i>
                             Questions
                         </a>
 

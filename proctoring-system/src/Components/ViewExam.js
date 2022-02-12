@@ -78,14 +78,7 @@ const ViewExam = () => {
                                                             </span>
                                                         </div>
 
-                                                        <Link to='/dashboard' style={{ textDecoration: 'none' }}>
-                                                            <button
-                                                                type="submit"
-                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
-                                                            >
-                                                                View Questions
-                                    </button>
-                                                        </Link>
+
                                                         <Link to={`/update-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"

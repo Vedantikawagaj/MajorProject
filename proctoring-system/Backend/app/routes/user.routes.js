@@ -14,12 +14,12 @@ module.exports = function(app) {
 
   app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
 
-  app.get("/api/test/viewuser", [authJwt.verifyToken, authJwt.isAdmin], controller.viewallUsers);
+  app.get("/api/test/viewuser", [authJwt.verifyToken, authJwt.isteacher], controller.viewallUsers);
 
 
   app.get(
     "/api/test/admin",
-    [authJwt.verifyToken, authJwt.isAdmin],
+    [authJwt.verifyToken, authJwt.isteacher],
     controller.adminBoard
   );
 };

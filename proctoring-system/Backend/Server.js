@@ -44,22 +44,22 @@ function initializer(){
         if(!err && count===0)
         {
             new Roles({
-                name:"user"
+                name:"student"
             }).save((err)=>{
                 if(err)
                 {
                     console.log(err);
                 }
-                else console.log("User role added successfully")
+                else console.log("Student role added successfully")
             })
             new Roles({
-                name:"admin"
+                name:"teacher"
             }).save((err)=>{
                 if(err)
                 {
                     console.log(err);
                 }
-                else console.log("Admin role added successfully")
+                else console.log("Teacher role added successfully")
             })
         }
     })
