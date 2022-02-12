@@ -4,8 +4,10 @@ import SideNavbar from './SideNavbar'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ExamDashboard = () => {
+
+    const [user,setuser]=useState({});
     let [exams, setexams] = useState([]);
-    const [userid, setuserid] = useState(201);
+    const [userid, setuserid] = useState(202);
     const handleViewExam = async () => {
 
         const res = await fetch('http://localhost:8080/api/exam/ve/' + userid, {
@@ -25,16 +27,25 @@ const ExamDashboard = () => {
 
     }
     useEffect(() => {
+        
+        // const getuserdata=async()=>{
+        //     const stringUser = await localStorage.getItem('user');
+        //     setuser(JSON.parse(stringUser));
+        // }
+        // getuserdata();
+        // setuserid(user._id);
         handleViewExam()
     }, [])
     return (
         <div className='dashboard'>
             <SideNavbar />
+            {console.log(user)}
             <div className='dashboard-app'>
 
 
                 <div className='dashboard-content'>
                     <div className="container">
+                        <h5>{userid && userid}</h5>
                         <div className="divider d-flex align-items-center my-4">
                             <p className="text-center fw-bold mx-2 mb-0  f4">Exam Section</p>
                         </div>

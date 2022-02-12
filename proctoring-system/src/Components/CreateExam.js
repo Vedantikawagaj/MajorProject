@@ -1,13 +1,13 @@
 import SideNavbar from "./SideNavbar"
 import '../ComponentCSS/SideNavbar.css'
 import { Link } from "react-router-dom"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CreateExam = () => {
     const [title, settitle] = useState('');
     const [duration, setduration] = useState();
     const [marks, setmarks] = useState();
-    const [userid, setuserid] = useState(201);
+    const [userid, setuserid] = useState();
     const handleExamCreation = async () => {
         const res = await fetch('http://localhost:8080/api/exam/ge/' + userid, {
             method: 'post',
@@ -26,6 +26,17 @@ const CreateExam = () => {
         alert("Exam created successfully");
     }
 
+    const [user,setuser]=useState({});
+    useEffect(() => {
+         const getuserdata=async()=>{
+            const stringUser = await localStorage.getItem('user');
+            setuser(JSON.parse(stringUser));
+        }
+        getuserdata();
+        setuserid(user._id);
+    }, [userid])
+
+
     return (
         <div className='dashboard'>
             <SideNavbar />
@@ -34,6 +45,7 @@ const CreateExam = () => {
 
                 <div className='dashboard-content'>
                     <div className='container'>
+                    <h5>{userid}</h5>
                         <div className="divider d-flex align-items-center my-4">
                             <p className="text-center fw-bold mx-2 mb-0  f4">Create New Exam</p>
                         </div>
