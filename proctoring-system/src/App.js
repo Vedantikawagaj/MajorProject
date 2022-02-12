@@ -17,7 +17,7 @@ import ViewQuestions from './Components/ViewQuestions';
 import QuestionDashboard from './Components/QuestionDashboard';
 import UpdateQuestion from './Components/UpdateQuestion';
 import DeleteQuestion from './Components/DeleteQuestion';
-import Center from './Components/Center';
+
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
         <Route path='/question-dashboard/:eid' element={ <QuestionDashboard/>}/>
         <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
         <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
-        <Route path='/center/:status/:message' element={ <Center/>}/>
+        
       </Routes>
     </div>
       
