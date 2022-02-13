@@ -45,6 +45,7 @@ const SideNavbar = () => {
                     <h6 className="dashboard-nav-item">
                         <i className="fas fa-home"></i>
                         Dashboard
+                        
                     </h6>
                 </Link>
 
@@ -61,7 +62,7 @@ const SideNavbar = () => {
                         </a>
 
                     <div className='dashboard-nav-dropdown-menu'>
-                        <Link style={{ textDecoration: 'none' }} to='/create-exam'>
+                        <Link style={{ textDecoration: 'none' }} to="/create-exam">
                             <h6 className="dashboard-nav-dropdown-item">
                                 <i className="fas fa-plus mr2"></i>
                                 Create Exam

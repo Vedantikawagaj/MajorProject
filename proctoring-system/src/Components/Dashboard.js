@@ -12,7 +12,7 @@ const Dashboard = () => {
     }, [])
     return (
         <div className='dashboard'>
-        <SideNavbar/>
+        <SideNavbar />
         <div className='dashboard-app'>
 
 

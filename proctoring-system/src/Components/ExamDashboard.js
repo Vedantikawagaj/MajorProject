@@ -5,47 +5,42 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ExamDashboard = () => {
 
-    const [user,setuser]=useState({});
     let [exams, setexams] = useState([]);
-    const [userid, setuserid] = useState(202);
-    const handleViewExam = async () => {
 
-        const res = await fetch('http://localhost:8080/api/exam/ve/' + userid, {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json'
-
-            },
-
-        })
-
-        const data = await res.json();
-        setexams(data);
-        // alert("Exam created successfully");
-        // console.log(data);
-
-
-    }
     useEffect(() => {
+        const handleViewExam = async (id) => {
+            const stringUser = await localStorage.getItem('user');
+            if (stringUser) {
+                let data = JSON.parse(stringUser);
         
-        // const getuserdata=async()=>{
-        //     const stringUser = await localStorage.getItem('user');
-        //     setuser(JSON.parse(stringUser));
-        // }
-        // getuserdata();
-        // setuserid(user._id);
+                const res = await fetch('http://localhost:8080/api/exam/ve/' + data.id, {
+                    method: 'get',
+                    headers: {
+                        'Content-Type': 'application/json'
+
+                    },
+
+                })
+
+                const data1 = await res.json();
+                setexams(data1);
+            }
+
+
+        }
         handleViewExam()
+
     }, [])
     return (
         <div className='dashboard'>
             <SideNavbar />
-            {console.log(user)}
+            {/* {console.log(user)} */}
             <div className='dashboard-app'>
 
 
                 <div className='dashboard-content'>
                     <div className="container">
-                        <h5>{userid && userid}</h5>
+                        {/* <h5>{userid && userid}</h5> */}
                         <div className="divider d-flex align-items-center my-4">
                             <p className="text-center fw-bold mx-2 mb-0  f4">Exam Section</p>
                         </div>

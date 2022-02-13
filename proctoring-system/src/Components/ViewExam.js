@@ -5,27 +5,30 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ViewExam = () => {
     let [exams, setexams] = useState([]);
-    const [userid, setuserid] = useState(201);
-    const handleViewExam = async () => {
 
-        const res = await fetch('http://localhost:8080/api/exam/ve/' + userid, {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json'
-
-            },
-
-        })
-
-        const data = await res.json();
-        setexams(data);
-        // alert("Exam created successfully");
-        // console.log(data);
-
-
-    }
     useEffect(() => {
+        const handleViewExam = async (id) => {
+            const stringUser = await localStorage.getItem('user');
+            if (stringUser) {
+                let data = JSON.parse(stringUser);
+        
+                const res = await fetch('http://localhost:8080/api/exam/ve/' + data.id, {
+                    method: 'get',
+                    headers: {
+                        'Content-Type': 'application/json'
+
+                    },
+
+                })
+
+                const data1 = await res.json();
+                setexams(data1);
+            }
+
+
+        }
         handleViewExam()
+
     }, [])
     return (
         <div className='dashboard'>

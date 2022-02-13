@@ -1,15 +1,18 @@
 import SideNavbar from "./SideNavbar"
 import '../ComponentCSS/SideNavbar.css'
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 const CreateExam = () => {
+    // let {user} = useParams();
     const [title, settitle] = useState('');
-    const [duration, setduration] = useState();
-    const [marks, setmarks] = useState();
-    const [userid, setuserid] = useState();
+    const [duration, setduration] = useState(0);
+    const [marks, setmarks] = useState(0);
+ 
+    
     const handleExamCreation = async () => {
-        const res = await fetch('http://localhost:8080/api/exam/ge/' + userid, {
+        
+        const res = await fetch('http://localhost:8080/api/exam/ge/' + user.id, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,9 +26,9 @@ const CreateExam = () => {
         })
 
         const data = await res.json();
+        console.log(data)
         alert("Exam created successfully");
     }
-
     const [user,setuser]=useState({});
     useEffect(() => {
          const getuserdata=async()=>{
@@ -33,10 +36,7 @@ const CreateExam = () => {
             setuser(JSON.parse(stringUser));
         }
         getuserdata();
-        setuserid(user._id);
-    }, [userid])
-
-
+    }, [])
     return (
         <div className='dashboard'>
             <SideNavbar />
@@ -45,7 +45,7 @@ const CreateExam = () => {
 
                 <div className='dashboard-content'>
                     <div className='container'>
-                    <h5>{userid}</h5>
+                    {/* <h5>{userid}</h5> */}
                         <div className="divider d-flex align-items-center my-4">
                             <p className="text-center fw-bold mx-2 mb-0  f4">Create New Exam</p>
                         </div>
