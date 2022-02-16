@@ -47,14 +47,14 @@ const QuestionDashboard = () => {
 
                                 <div className="question ml-sm-5 pl-sm-5 pt-2">
                                     <div className="py-2 mb3 b f4"><b>Question:-  <span className='ml3'>{item.question}</span></b></div>
-                                    <div className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                    <div className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="opt">
                                         <div className="row">
                                             <div className="col-md-6 mb-4">
-                                                <label className="options">{item.a}  <span className="checkmark"></span>
+                                                <label className="opt">{item.a}  <span className="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div className="col-md-6 mb-4">
-                                                <label className="options">{item.b}  <span className="checkmark"></span>
+                                                <label className="opt">{item.b}  <span className="checkmark"></span>
                                                 </label>
                                             </div>
 
@@ -62,13 +62,13 @@ const QuestionDashboard = () => {
                                         <div className="row">
                                             <div className="col-md-6 mb-4">
 
-                                                <label className="options">{item.c}  <span className="checkmark"></span>
+                                                <label className="opt">{item.c}  <span className="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div className="col-md-6 mb-4">
 
 
-                                                <label className="options">{item.d}  <span className="checkmark"></span>
+                                                <label className="opt">{item.d}  <span className="checkmark"></span>
                                                 </label>
                                             </div>
 
