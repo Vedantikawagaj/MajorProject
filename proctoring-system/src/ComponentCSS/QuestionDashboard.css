@@ -29,19 +29,19 @@
     width: 75%
 }
 
-.options {
+.opt {
     position: relative;
     padding-left: 40px
 }
 
-#options label {
+#opt label {
     display: block;
     margin-bottom: 15px;
     font-size: 14px;
     cursor: pointer
 }
 
-.options input {
+.opt input {
     opacity: 0
 }
 
