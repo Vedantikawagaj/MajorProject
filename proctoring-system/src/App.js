@@ -17,6 +17,7 @@ import ViewQuestions from './Components/ViewQuestions';
 import QuestionDashboard from './Components/QuestionDashboard';
 import UpdateQuestion from './Components/UpdateQuestion';
 import DeleteQuestion from './Components/DeleteQuestion';
+import QuizPage from './Components/QuizPage';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
     <div className="App">
     <Routes>
         
-        <Route path='/' element={ <LoginPage/>}/>
+        <Route path='/login' element={ <LoginPage/>}/>
         <Route path='/register' element={ <RegisterPage/>}/>
         <Route path='/dashboard' element={ <Dashboard/>}/>
         <Route path='/create-exam' element={ <CreateExam/>}/>
@@ -38,7 +39,7 @@ function App() {
         <Route path='/question-dashboard/:eid' element={ <QuestionDashboard/>}/>
         <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
         <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
-        
+        <Route path='/' element={ <QuizPage/>}/>
       </Routes>
     </div>
       
