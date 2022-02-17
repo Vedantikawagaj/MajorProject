@@ -27,7 +27,7 @@ function App() {
     <div className="App">
     <Routes>
         
-        <Route path='/login' element={ <LoginPage/>}/>
+        <Route path='/' element={ <LoginPage/>}/>
         <Route path='/register' element={ <RegisterPage/>}/>
         <Route path='/dashboard' element={ <Dashboard/>}/>
         <Route path='/create-exam' element={ <CreateExam/>}/>
@@ -40,7 +40,7 @@ function App() {
         <Route path='/question-dashboard/:eid' element={ <QuestionDashboard/>}/>
         <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
         <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
-        <Route path='/' element={ <QuizPage/>}/>
+        <Route path='/start-exam' element={ <QuizPage/>}/>
       </Routes>
     </div>
       

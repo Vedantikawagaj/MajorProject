@@ -40,16 +40,17 @@ class Quiz extends Component {
     setMode = (e) => this.props.onSubmit(e.target.id);
 
     renderMode() {
-        if (this.props.mode === 'quiz') {
+        // if (this.props.mode === 'quiz') {
             return (<Questions move={this.move} />)
-        } else if (this.props.mode === 'review') {
-            return (<Review quiz={this.props.quiz} move={this.move} />)
-        } else {
-            return (<Result questions={this.props.quiz.questions || []} />)
-        }
+        // } else if (this.props.mode === 'review') {
+        //     return (<Review quiz={this.props.quiz} move={this.move} />)
+        // } else {
+        //     return (<Result questions={this.props.quiz.questions || []} />)
+        // }
     }
 
     render() {
+        {console.log(this.props.quiz)}
         return (
             <div>
                 {this.renderMode()}
@@ -63,6 +64,7 @@ class Quiz extends Component {
             </div>
         )
     }
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
