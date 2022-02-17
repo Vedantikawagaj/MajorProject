@@ -18,7 +18,12 @@ let initialQuiz = {
             'showPager': true,
             'theme': 'none'
         },
-        questions: []
+        question: "",
+        a:"",
+        b:"",
+        c:"",
+        d:"",
+        ans:""
     },
     mode: 'quiz',
     pager: {
@@ -35,7 +40,9 @@ export default (state = { ...initialQuiz }, action) => {
                 ...state, pager: action.payload, mode: 'quiz'
             }
         case ActionTypes.QuizLoad:
+            console.log(action.payload);
             return {
+               
                 ...state, quiz: action.payload
             }
         case ActionTypes.QuizSubmit:
