@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ActionTypes } from '../constants/actionTypes';
 import { connect } from 'react-redux';
+import '../ComponentCSS/Questions.css'
 
 const mapStateToProps = state => ({ ...state.quiz, ...state.mode, ...state.pager });
 
@@ -33,7 +34,7 @@ class Questions extends Component {
                     <hr />
                     {questions.map(q =>
                         <div key={q.id}>
-                            <div className="badge badge-info">Question {this.props.pager.index + 1} of {this.props.pager.count}.</div>
+                            <div className="badge badge-info">Question {this.props.pager.index + 1} of {this.props.pager.count}</div>
                             <h3 className="font-weight-normal">{this.props.pager.index + 1}. <span>{q.question}</span></h3>
                             <div className="row text-left options">
                                 {/* {
@@ -85,10 +86,10 @@ class Questions extends Component {
                     )}
                     <hr />
                     <div className="text-center">
-                        {this.props.quiz.config.allowBack && <button id="first" className="btn btn-default" onClick={this.props.move}>First</button>}
-                        {this.props.quiz.config.allowBack && <button id="prev" className="btn btn-default" onClick={this.props.move}>Prev</button>}
-                        <button id="next" className="btn btn-primary" onClick={this.props.move}>Next</button>
-                        <button id="last" className="btn btn-default" onClick={this.props.move}>Last</button>
+                        {this.props.quiz.config.allowBack && <button id="first" className="btn btn-secondary" onClick={this.props.move}>First</button>}
+                        {this.props.quiz.config.allowBack && <button id="prev" className="btn btn-secondary" onClick={this.props.move}>Prev</button>}
+                        <button id="next" className="btn btn-secondary" onClick={this.props.move}>Next</button>
+                        <button id="last" className="btn btn-secondary" onClick={this.props.move}>Last</button>
                     </div>
                 </div >
             )

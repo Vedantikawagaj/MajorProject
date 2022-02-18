@@ -42,9 +42,11 @@ class Quiz extends Component {
     renderMode() {
         if (this.props.mode === 'quiz') {
             return (<Questions move={this.move} />)
-        } else if (this.props.mode === 'review') {
+        } 
+        else if (this.props.mode === 'review') {
             return (<Review quiz={this.props.quiz} move={this.move} />)
-        } else {
+        }
+         else {
             return (<Result questions={this.props.quiz.questions || []} />)
         }
     }
@@ -59,8 +61,11 @@ class Quiz extends Component {
                         <hr />
                         <button id="quiz" className="btn btn-info" onClick={this.setMode}>Quiz</button>
                         <button id="review" className="btn btn-info" onClick={this.setMode}>Review</button>
-                        <button id="submit" className="btn btn-primary" onClick={this.setMode}>Submit Quiz</button >
-                    </div >}
+                        <button id="submit" className="btn btn-success" onClick={this.setMode}>Submit Quiz</button >
+
+                    </div >
+                    
+                    }
             </div>
         )
     }

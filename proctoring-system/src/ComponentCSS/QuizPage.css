@@ -7,7 +7,7 @@
 }
 
 .option {
-    background-color: #cadaee;
+    background-color:#b3b2c4;
     cursor: pointer;
     font-size: 20px;
     margin: 4px;
@@ -79,10 +79,15 @@
 
     h3, .h3 {
         font-size: 18px;
+        
     }
 
     .option {
         font-size: 16px;
         padding: 6px;
     }
+}
+
+.badge-info{
+    background-color: #2f2e41;
 }

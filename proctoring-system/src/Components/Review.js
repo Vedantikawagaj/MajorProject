@@ -10,6 +10,7 @@ class Review extends Component {
             <h2 className="text-center font-weight-normal">Review Quiz: {this.props.quiz.name}</h2>
             <hr />
             <div className="row text-center">
+                {console.log(this.props.quiz)}
                 {this.props.quiz.questions.map((q, index) =>
                     <div key={q.id} className="col-4 cursor-pointer">
                         <div id={index} onClick={this.props.move} className={`p-3 mb-2 ${this.isAnswered(q) === 'Answered' ? 'bg-info' : 'bg-warning'}`}>{index + 1}. {this.isAnswered(q)}</div>

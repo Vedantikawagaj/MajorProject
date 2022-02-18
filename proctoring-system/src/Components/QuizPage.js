@@ -35,7 +35,7 @@ class QuizPage extends Component {
 
   load(quizId) {
     let url = quizId || this.props.quizId;
-    fetch('http://localhost:8080/api/question/vq/1004').then(res => res.json()).then(res => {
+    fetch('http://localhost:8080/api/question/vq/1001').then(res => res.json()).then(res => {
       // let quiz = res;
       let quiz = {};
       quiz.question = res;
@@ -61,15 +61,10 @@ class QuizPage extends Component {
       <div className="container">
         <header className="p-2">
           <div className="row">
-            <div className="col-6">
-              <h3>Quiz Application</h3>
+            <div className="col-12">
+              <h3>This Exam Is Being Proctored</h3>
             </div>
-            <div className="col-6 text-right">
-              <label className="mr-1">Select Quiz:</label>
-              <select onChange={this.onChange}>
-                {this.state.quizes.map(q => <option key={q.id} value={q.id}>{q.name}</option>)}
-              </select>
-            </div>
+            
           </div>
         </header>
         
