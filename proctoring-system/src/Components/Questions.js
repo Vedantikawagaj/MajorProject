@@ -10,21 +10,41 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Questions extends Component {
-
-    onAnswer(question, option) {
-        let quiz = JSON.parse(JSON.stringify(this.props.quiz));
-        let q = quiz.questions.find(x => x.id === question.id);
-        if (q.questionTypeId === 1) {
-            q.options.forEach((x) => { x.selected = false; });
+    constructor(props){
+        super(props);
+        this.state = {
+            ans:""
         }
-        q.options.find(x => x.id === option.id).selected = true;
-        this.props.onAnswer(quiz);
+        this.handleChange = this.handleChange.bind(this);
     }
+    handleChange (event,q) {
+        this.setState(
+            {
+            [event.target.name] 
+                : event.target.value 
+            },
+            () => {
+                this.onAnswer(q,this.state.ans)
+            });
+        // console.log(q)
+    }
+    onAnswer(question,a) {
+        let quiz = JSON.parse(JSON.stringify(this.props.quiz));
+        let q = quiz.question.find(x => x._id === question._id);
+        // if (q.questionTypeId === 1) {
+        //     q.options.forEach((x) => { x.selected = false; });
+        // }
+        q.selected = true;
+        q.s_ans =a;
+
+        // q.options.find(x => x.id === option.id).selected = true;
+        this.props.onAnswer(quiz);
+        // console.log(this.state.ans)
+    }
+    
 
     render() {
-        {console.log(this.props.quiz)}
-        // const arr = [];
-        // arr.push(this.props.quiz)
+
         let questions = (this.props.quiz.question) ?
             this.props.quiz.question.slice(this.props.pager.index, this.props.pager.index + this.props.pager.size) : [];
 
@@ -36,7 +56,7 @@ class Questions extends Component {
                         <div key={q.id}>
                             <div className="badge badge-info">Question {this.props.pager.index + 1} of {this.props.pager.count}</div>
                             <h3 className="font-weight-normal">{this.props.pager.index + 1}. <span>{q.question}</span></h3>
-                            <div className="row text-left options">
+                            <div className="row text-left options" onChange={e => { this.handleChange(e,q) }}>
                                 {/* {
                                     q.options.map(option =>
                                         <div key={option.id} className="col-6">
@@ -52,7 +72,7 @@ class Questions extends Component {
                                  <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="checkbox"  />
+                                                    <input  type="radio" name="ans" value={q.a}   />
                                                     {q.a}
                                                 </label>
                                             </div>
@@ -60,7 +80,7 @@ class Questions extends Component {
                                         <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="checkbox"  />
+                                                    <input  type="radio" name="ans" value={q.b}    />
                                                     {q.b}
                                                 </label>
                                             </div>
@@ -68,7 +88,7 @@ class Questions extends Component {
                                         <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="checkbox"  />
+                                                    <input  type="radio" name="ans" value={q.c}    />
                                                     {q.c}
                                                 </label>
                                             </div>
@@ -76,7 +96,7 @@ class Questions extends Component {
                                         <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="checkbox"  />
+                                                    <input  type="radio" name="ans" value={q.d}    />
                                                     {q.d}
                                                 </label>
                                             </div>

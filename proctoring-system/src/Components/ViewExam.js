@@ -98,6 +98,14 @@ const ViewExam = () => {
                                                                 Delete Exam
                                     </button>
                                                         </Link>
+                                                        <Link to={`/update-exam/${item._id}`} style={{ textDecoration: 'none' }}>
+                                                            <button
+                                                                type="submit"
+                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
+                                                            >
+                                                                Start Exam
+                                    </button>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

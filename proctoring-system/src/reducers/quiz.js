@@ -18,12 +18,7 @@ let initialQuiz = {
             'showPager': true,
             'theme': 'none'
         },
-        // question: "",
-        // a:"",
-        // b:"",
-        // c:"",
-        // d:"",
-        // ans:""
+       
         question:[]
     },
     mode: 'quiz',
@@ -42,18 +37,18 @@ export default (state = { ...initialQuiz }, action) => {
                 ...state, pager: action.payload, mode: 'quiz'
             }
         case ActionTypes.QuizLoad:
-            console.log(action.payload);
+            // console.log(action.payload);
             return {
                
                 ...state, quiz: action.payload
             }
         case ActionTypes.QuizSubmit:
-            console.log('quiz.js Submitted.');
+            // console.log('quiz.js Submitted.');
             return {
                 ...state, mode: action.payload
             }
         case ActionTypes.QuizAnswer:
-            console.log('quiz.js reducer Quiz Answer called.');
+            // console.log(action.payload);
             return {
                 ...state, quiz: action.payload
             }

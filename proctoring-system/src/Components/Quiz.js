@@ -45,14 +45,13 @@ class Quiz extends Component {
         } 
         else if (this.props.mode === 'review') {
             return (<Review quiz={this.props.quiz} move={this.move} />)
-        }
-         else {
-            return (<Result questions={this.props.quiz.questions || []} />)
+        } else {
+            return (<Result questions={this.props.quiz.question || []} />)
         }
     }
 
     render() {
-        {console.log(this.props.quiz)}
+        // {console.log(this.props.quiz)}
         return (
             <div>
                 {this.renderMode()}
