@@ -40,9 +40,10 @@ class QuizPage extends Component {
       let quiz = {};
       quiz.question = res;
       console.log(quiz);
-      // quiz.questions.forEach(q => {
-      //   q.options.forEach(o => o.selected = false);
-      // });
+      quiz.question.forEach(q => {
+        q.selected = false;
+        q.s_ans = "";
+      });
       quiz.config = Object.assign(this.props.quiz.config || {}, quiz.config);
       console.log(quiz.config)
       this.pager.count = quiz.question.length / this.pager.size;
