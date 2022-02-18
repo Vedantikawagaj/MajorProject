@@ -22,8 +22,10 @@ class Questions extends Component {
 
     render() {
         {console.log(this.props.quiz)}
-        let questions = (this.props.quiz) ?
-            this.props.quiz.slice(this.props.pager.index, this.props.pager.index + this.props.pager.size) : [];
+        // const arr = [];
+        // arr.push(this.props.quiz)
+        let questions = (this.props.quiz.question) ?
+            this.props.quiz.question.slice(this.props.pager.index, this.props.pager.index + this.props.pager.size) : [];
 
             return (
                 <div id="quiz">

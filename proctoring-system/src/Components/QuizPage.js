@@ -35,14 +35,17 @@ class QuizPage extends Component {
 
   load(quizId) {
     let url = quizId || this.props.quizId;
-    fetch('http://localhost:8080/api/question/vq/1001').then(res => res.json()).then(res => {
-      let quiz = res;
-      console.log(res);
+    fetch('http://localhost:8080/api/question/vq/1004').then(res => res.json()).then(res => {
+      // let quiz = res;
+      let quiz = {};
+      quiz.question = res;
+      console.log(quiz);
       // quiz.questions.forEach(q => {
       //   q.options.forEach(o => o.selected = false);
       // });
       quiz.config = Object.assign(this.props.quiz.config || {}, quiz.config);
-      this.pager.count = quiz.length / this.pager.size;
+      console.log(quiz.config)
+      this.pager.count = quiz.question.length / this.pager.size;
       this.props.onQuizLoad(quiz);
       this.props.onPagerUpdate(this.pager);
     });
@@ -70,7 +73,7 @@ class QuizPage extends Component {
           </div>
         </header>
         
-        <Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode='quiz' />
+        <Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode={this.state.mode} />
       </div>
     );
   }

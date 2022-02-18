@@ -18,12 +18,13 @@ let initialQuiz = {
             'showPager': true,
             'theme': 'none'
         },
-        question: "",
-        a:"",
-        b:"",
-        c:"",
-        d:"",
-        ans:""
+        // question: "",
+        // a:"",
+        // b:"",
+        // c:"",
+        // d:"",
+        // ans:""
+        question:[]
     },
     mode: 'quiz',
     pager: {
@@ -36,6 +37,7 @@ let initialQuiz = {
 export default (state = { ...initialQuiz }, action) => {
     switch (action.type) {
         case ActionTypes.PagerUpdate:
+            
             return {
                 ...state, pager: action.payload, mode: 'quiz'
             }
