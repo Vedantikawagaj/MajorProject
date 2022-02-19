@@ -35,7 +35,7 @@ class QuizPage extends Component {
 
   load(quizId) {
     let url = quizId || this.props.quizId;
-    fetch('http://localhost:8080/api/question/vq/1001').then(res => res.json()).then(res => {
+    fetch('http://localhost:8080/api/question/vq/1004').then(res => res.json()).then(res => {
       // let quiz = res;
       let quiz = {};
       quiz.question = res;

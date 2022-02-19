@@ -53,10 +53,10 @@ class Questions extends Component {
                     {/* <h2 className="text-center font-weight-normal">{this.props.quiz.name}</h2> */}
                     <hr />
                     {questions.map(q =>
-                        <div key={q.id}>
+                        <div key={q._id}>
                             <div className="badge badge-info">Question {this.props.pager.index + 1} of {this.props.pager.count}</div>
                             <h3 className="font-weight-normal">{this.props.pager.index + 1}. <span>{q.question}</span></h3>
-                            <div className="row text-left options" onChange={e => { this.handleChange(e,q) }}>
+                            <div className="row text-left options"  onChange={e => { this.handleChange(e,q) }}>
                                 {/* {
                                     q.options.map(option =>
                                         <div key={option.id} className="col-6">
@@ -72,7 +72,7 @@ class Questions extends Component {
                                  <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="radio" name="ans" value={q.a}   />
+                                                    <input  type="radio" name="ans" value={q.a}  checked={q.s_ans === q.a} />
                                                     {q.a}
                                                 </label>
                                             </div>
@@ -80,7 +80,7 @@ class Questions extends Component {
                                         <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="radio" name="ans" value={q.b}    />
+                                                    <input  type="radio" name="ans" value={q.b}  checked={q.s_ans === q.b}  />
                                                     {q.b}
                                                 </label>
                                             </div>
@@ -88,7 +88,7 @@ class Questions extends Component {
                                         <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="radio" name="ans" value={q.c}    />
+                                                    <input  type="radio" name="ans" value={q.c}  checked={q.s_ans === q.c}  />
                                                     {q.c}
                                                 </label>
                                             </div>
@@ -96,7 +96,7 @@ class Questions extends Component {
                                         <div className="col-6">
                                             <div className="option">
                                                 <label className="font-weight-normal" >
-                                                    <input  type="radio" name="ans" value={q.d}    />
+                                                    <input  type="radio" name="ans" value={q.d}  checked={q.s_ans === q.d}  />
                                                     {q.d}
                                                 </label>
                                             </div>
