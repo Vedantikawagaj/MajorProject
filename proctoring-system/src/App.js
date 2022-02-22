@@ -41,6 +41,7 @@ function App() {
         <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
         <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
         <Route path='/start-exam' element={ <QuizPage/>}/>
+        
       </Routes>
     </div>
       

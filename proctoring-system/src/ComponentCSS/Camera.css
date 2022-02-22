@@ -1,0 +1,20 @@
+img,
+button,
+video {
+  display: block;
+}
+
+.btn-h{
+  width: 50%;
+  margin-left: 25%;
+   margin-right: 25%;
+}
+
+.obt{
+  background-color:#2f2e41 ;
+  color: white;
+}
+.obt:hover{
+  color:white;
+}
+

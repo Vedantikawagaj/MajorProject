@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react'
 import { Link } from 'react-router-dom';
-
+import Webcam from "react-webcam";
+import '../ComponentCSS/Camera.css'
 const Register = () => {
     const [fn, setfn] = useState('');
     const [ln, setln] = useState('');
@@ -8,7 +9,7 @@ const Register = () => {
     const [pw, setpw] = useState('');
     const [roles, setroles] = useState([]);
     const handleRegister = async () => {
-        
+
         const res = await fetch('http://localhost:8080/api/auth/signup', {
             method: 'post',
             headers: {
@@ -27,7 +28,23 @@ const Register = () => {
         const data = await res.json();
         alert("Registration successful");
         console.log(data);
+
+
     }
+
+    const webcamRef = React.useRef(null);
+    const [imgSrc, setImgSrc] = React.useState(null);
+    const videoConstraints = {
+        width: 445,
+        height: 200,
+        facingMode: "user"
+    };
+    const capture = () => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        console.log("imageSrc");
+        setImgSrc(imageSrc);
+    }
+
     return (
         <div>
             <section className="vh-100">
@@ -76,19 +93,19 @@ const Register = () => {
                                 </div>
                                 <div className="form-outline mb-4 ">
 
-                                <select className="form-control form-control-lg " name="users" id="users" 
-                                onChange={(val) => {
+                                    <select className="form-control form-control-lg " name="users" id="users"
+                                        onChange={(val) => {
                                             setroles(roles.concat(val.target.value.toLowerCase()))
 
                                         }}>
-                                    <option value="Select User" >Select User</option>
-                                    <option value="Student">Student</option>
-                                    <option value="Teacher">Teacher</option>
+                                        <option value="Select User" >Select User</option>
+                                        <option value="Student">Student</option>
+                                        <option value="Teacher">Teacher</option>
 
-                                </select>
+                                    </select>
 
                                 </div>
-                                
+
                                 <div className="form-outline mb-4 ">
 
                                     <input
@@ -120,11 +137,30 @@ const Register = () => {
 
                                 </div>
 
+                                <>
+                                    <Webcam
+                                        audio={false}
+                                        ref={webcamRef}
+                                        height={200}
+                                        width={445}
+                                        videoConstraints={videoConstraints}
+                                        screenshotFormat="image/jpeg"
+                                        mirrored={true}
 
+                                    />
+                                     <div type="submit" className="btn btn-dark btn-sm btn-block btn-h mv2" onClick={capture}>Capture Image</div>
+                                    {imgSrc && (
+                                        <img
+                                            src={imgSrc}
+                                            className="mv2"
+                                        />
+                                    )}
+
+                                </>
                                 <Link style={{ textDecoration: 'none' }} to='/'>
                                     <button
                                         type="submit"
-                                        className="btn btn-primary btn-lg btn-block"
+                                        className="btn obt btn-lg btn-block"
                                         onClick={handleRegister}>
                                         Register
                                         </button>

@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "D:\\Vedantika\\Python\\python.exe",
+    "python.analysis.extraPaths": [
+        "./flask-backend"
+    ]
+}
