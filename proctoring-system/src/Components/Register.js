@@ -21,6 +21,7 @@ const Register = () => {
                 "lastname": ln,
                 "email": email,
                 "password": pw,
+                "imagelink":imgSrc,
                 "roles": roles
             })
         })
@@ -39,12 +40,16 @@ const Register = () => {
         height: 200,
         facingMode: "user"
     };
-    const capture = () => {
+    // const capture = () => {
+    //     const imageSrc = webcamRef.current.getScreenshot();
+       
+    //     setImgSrc(imageSrc);
+    // }
+    const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
-        console.log("imageSrc");
         setImgSrc(imageSrc);
-    }
-
+      }, [webcamRef, setImgSrc]);
+    
     return (
         <div>
             <section className="vh-100">

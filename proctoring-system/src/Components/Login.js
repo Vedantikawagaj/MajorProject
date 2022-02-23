@@ -1,7 +1,8 @@
 import React, { Component, useState } from 'react'
 import '../ComponentCSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
-
+import Webcam from "react-webcam";
+import '../ComponentCSS/Camera.css'
 const Login = () => {
     let history = useNavigate();
     const [email, setemail] = useState('');
@@ -38,6 +39,17 @@ const Login = () => {
 
     }
 
+    const webcamRef = React.useRef(null);
+    const [imgSrc, setImgSrc] = React.useState(null);
+    const videoConstraints = {
+        width: 445,
+        height: 200,
+        facingMode: "user"
+    };
+    const capture = React.useCallback(() => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        setImgSrc(imageSrc);
+      }, [webcamRef, setImgSrc]);
     
     return (
         <div>
@@ -85,7 +97,26 @@ const Login = () => {
 
                                 </div>
 
+                                <>
+                                    <Webcam
+                                        audio={false}
+                                        ref={webcamRef}
+                                        height={200}
+                                        width={445}
+                                        videoConstraints={videoConstraints}
+                                        screenshotFormat="image/jpeg"
+                                        mirrored={true}
 
+                                    />
+                                     <div type="submit" className="btn btn-dark btn-sm btn-block btn-h mv2" onClick={capture}>Capture Image</div>
+                                    {imgSrc && (
+                                        <img
+                                            src={imgSrc}
+                                            className="mv2"
+                                        />
+                                    )}
+
+                                </>
                              
 
                                 <div type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</div>

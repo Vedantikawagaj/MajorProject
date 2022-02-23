@@ -14,8 +14,9 @@ exports.signup = (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
+    image:req.body.imagelink
   });
-  console.log("helloo"+ req.body)
+ 
   user.save((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -42,8 +43,11 @@ exports.signup = (req, res) => {
               console.log(err)
               return;
             }
-
-            res.send({ message: "User was registered successfully!" });
+            res.status(200).send({
+              message: "User was registered successfully!"
+              
+            });
+            
           });
         }
       );
@@ -63,7 +67,11 @@ exports.signup = (req, res) => {
             return;
           }
 
-          res.send({ message: "User was registered successfully!" });
+          res.status(200).send({
+            message: "User was registered successfully!"
+            
+          });
+          
         });
       });
     }
