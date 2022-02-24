@@ -7,9 +7,9 @@ import base64
 from PIL import Image
 from io import BytesIO   
 from gaze_tracking import GazeTracking
-from tensorflow import Model
+from tensorflow.keras import Model
 import math
-from tensorflow import (
+from tensorflow.keras.layers import (
     Add,
     Concatenate,
     Conv2D,
@@ -20,7 +20,7 @@ from tensorflow import (
     ZeroPadding2D,
     BatchNormalization
 )
-from tensorflow  import l2
+from tensorflow.keras.regularizers  import l2
 import wget
 from time import time
 
