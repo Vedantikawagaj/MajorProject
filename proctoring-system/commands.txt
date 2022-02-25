@@ -1,0 +1,20 @@
+pip install numpy
+pip install scipy
+pip install tensorflow
+pip install Flask
+pip install Flask-Session
+pip install Flask-Cors
+
+pip install cmake
+pip install opencv-python
+
+https://github.com/datamagic2020/Install-dlib download zip
+then run pip install dliblocation\dlibfilename.whl
+
+pip install Pillow
+pip install wget
+pip install deepface
+pip install opencv-contrib-python
+
+move pose_model in flask backend
+pute shape predictor in trained models

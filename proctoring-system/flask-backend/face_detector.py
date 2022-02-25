@@ -6,17 +6,18 @@ def get_face_detector(modelFile=None,
                       quantized=False):
     if quantized:
         if modelFile == None:
-            modelFile = "models/opencv_face_detector_uint8.pb"
+            modelFile = "models\opencv_face_detector_uint8.pb"
         if configFile == None:
-            configFile = "models/opencv_face_detector.pbtxt"
+            configFile = "models\opencv_face_detector.pbtxt"
         model = cv2.dnn.readNetFromTensorflow(modelFile, configFile)
         
     else:
         if modelFile == None:
-            modelFile = "models/res10_300x300_ssd_iter_140000.caffemodel"
+            modelFile = "models\\res10_300x300_ssd_iter_140000.caffemodel"
         if configFile == None:
-            configFile = "models/deploy.prototxt"
+            configFile = "models\deploy.prototxt"
         model = cv2.dnn.readNetFromCaffe(configFile, modelFile)
+        
     return model
 
 def find_faces(img, model):

@@ -1,6 +1,6 @@
 const express = require('express');
 const app=express();
-const axios=require('axios');
+// const axios=require('axios');
 const bodyParser = require("body-parser");
 const dbConfig = require('./app/config/db.config');
 const db = require('./app/models');
@@ -12,7 +12,7 @@ var corsoption = {
 
 app.use(cors(corsoption));
 app.use(bodyParser.json());
-
+// app.use(axios);
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{

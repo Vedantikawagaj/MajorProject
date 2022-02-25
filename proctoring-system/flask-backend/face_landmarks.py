@@ -2,9 +2,11 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-
-def get_landmark_model(saved_model="models/pose_model"):
-    model = keras.models.load_model(saved_model)
+import os
+cwdlm = os.path.abspath(os.path.dirname(__file__))
+model_path_glm = os.path.abspath(os.path.join(cwdlm, "pose_model"))
+def get_landmark_model(saved_model=model_path_glm):
+    model = tf.saved_model.load(saved_model)
     return model
 
 def get_square_box(box):

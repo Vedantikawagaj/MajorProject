@@ -2,7 +2,7 @@ const config = require("../config/auth.config");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-
+const axios=require('axios');
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
@@ -79,7 +79,7 @@ exports.signup = (req, res) => {
 };
 
 
-exports.signin = (req, res) => {
+exports.signin = async (req, res) => {
   // User.findOne({
   //   email: req.body.email
   // })
@@ -130,10 +130,15 @@ exports.signin = (req, res) => {
   //     });
   //   });
 
-  axios.post("http://127.0.0.1:5000/verify-image", {
-    "image": req.body.imagelink
-  }).then(
-    (response) => {
+  var res = await axios.post("http://127.0.0.1:5000/verify-image", {
+    image : req.body.imagelink
+    
+  },{
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}).then(
+    (response) => {console.log(req.body.imagelink)
         var result = response.data;
         console.log(result);
         res.status(200).send(result)
@@ -141,5 +146,12 @@ exports.signin = (req, res) => {
     (error) => {
         console.log(error);
     }
-);
+).catch(error => {
+  if (!error.response) {
+      // network error
+      this.errorStatus = 'Error: Network Error';
+  } else {
+      this.errorStatus = error.response.data.message;
+  }
+})
 };

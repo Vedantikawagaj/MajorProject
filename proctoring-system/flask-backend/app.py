@@ -5,6 +5,12 @@ import camera
 
 app = Flask(__name__)
 
+app.config['SESSION_COOKIE_SAMESITE'] = "None"
+
+app.config['SESSION_TYPE'] = 'filesystem'
+
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
 sess = Session()
 sess.init_app(app)
 
@@ -16,36 +22,36 @@ YOUR_DOMAIN = 'http://localhost:5000'
 def make_session_permanent():
 	session.permanent = True
 
-@app.route('/video_feed', methods=['GET','POST'])
-def video_feed():
-	if request.method == "POST":
-		imgData = request.form['data[imgData]']
-		testid = request.form['data[testid]']
-		voice_db = request.form['data[voice_db]']
-		proctorData = camera.get_frame(imgData)
-		jpg_as_text = proctorData['jpg_as_text']
-		mob_status =proctorData['mob_status']
-		person_status = proctorData['person_status']
-		user_move1 = proctorData['user_move1']
-		user_move2 = proctorData['user_move2']
-		eye_movements = proctorData['eye_movements']
-		print(testid)
-		print(voice_db)
-		# cur = mysql.connection.cursor()
-		# results = cur.execute('INSERT INTO proctoring_log (email, name, test_id, voice_db, img_log, user_movements_updown, user_movements_lr, user_movements_eyes, phone_detection, person_status, uid) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-		# 	(dict(session)['email'], dict(session)['name'], testid, voice_db, jpg_as_text, user_move1, user_move2, eye_movements, mob_status, person_status,dict(session)['uid']))
-		# mysql.connection.commit()
-		# cur.close()
-		# if(results > 0):
-		# 	return "recorded image of video"
-		# else:
-		# 	return "error in video" 
+# @app.route('/video_feed', methods=['GET','POST'])
+# def video_feed():
+# 	if request.method == "POST":
+# 		imgData = request.form['data[imgData]']
+# 		testid = request.form['data[testid]']
+# 		voice_db = request.form['data[voice_db]']
+# 		proctorData = camera.get_frame(imgData)
+# 		jpg_as_text = proctorData['jpg_as_text']
+# 		mob_status =proctorData['mob_status']
+# 		person_status = proctorData['person_status']
+# 		user_move1 = proctorData['user_move1']
+# 		user_move2 = proctorData['user_move2']
+# 		eye_movements = proctorData['eye_movements']
+# 		print(testid)
+# 		print(voice_db)
+# 		# cur = mysql.connection.cursor()
+# 		# results = cur.execute('INSERT INTO proctoring_log (email, name, test_id, voice_db, img_log, user_movements_updown, user_movements_lr, user_movements_eyes, phone_detection, person_status, uid) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+# 		# 	(dict(session)['email'], dict(session)['name'], testid, voice_db, jpg_as_text, user_move1, user_move2, eye_movements, mob_status, person_status,dict(session)['uid']))
+# 		# mysql.connection.commit()
+# 		# cur.close()
+# 		# if(results > 0):
+# 		# 	return "recorded image of video"
+# 		# else:
+# 		# 	return "error in video" 
 @app.route('/verify-image', methods=['GET','POST'])
 def verifyImage():
 	if request.method == 'POST':
-		imgdata1 = request.get_json();
-		print(imgdata1);
-		return imgdata1;
+		image = request.get_json()
+		print(image)
+		return image
 	# 	form['image_hidden']
 	# 	cur = mysql.connection.cursor()
 	# 	results1 = cur.execute('SELECT uid, name, email, password, user_type, user_image from users where email = %s and user_type = %s and user_login = 0' , (email,user_type))
