@@ -17,4 +17,6 @@ pip install deepface
 pip install opencv-contrib-python
 
 move pose_model in flask backend
-pute shape predictor in trained models
+put shape predictor in trained models
+
+python -m flask run

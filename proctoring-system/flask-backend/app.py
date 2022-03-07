@@ -2,6 +2,10 @@ from flask import Flask, request, render_template, flash, redirect, url_for,sess
 from flask_session import Session
 from flask_cors import CORS, cross_origin
 import camera
+import numpy as np
+from deepface import DeepFace
+import base64
+import cv2
 
 app = Flask(__name__)
 
@@ -50,8 +54,11 @@ def make_session_permanent():
 def verifyImage():
 	if request.method == 'POST':
 		image = request.get_json()
-		print(image)
-		return image
+		# i=jsonify(image)
+		# print(image['signinimage'])
+		# print(i.signinimage)
+		# return image
+
 	# 	form['image_hidden']
 	# 	cur = mysql.connection.cursor()
 	# 	results1 = cur.execute('SELECT uid, name, email, password, user_type, user_image from users where email = %s and user_type = %s and user_login = 0' , (email,user_type))
@@ -61,11 +68,16 @@ def verifyImage():
 	# 		password = cresults['password']
 	# 		name = cresults['name']
 	# 		uid = cresults['uid']
-	# 		nparr1 = np.frombuffer(base64.b64decode(imgdata1), np.uint8)
-	# 		nparr2 = np.frombuffer(base64.b64decode(imgdata2), np.uint8)
-	# 		image1 = cv2.imdecode(nparr1, cv2.COLOR_BGR2GRAY)
-	# 		image2 = cv2.imdecode(nparr2, cv2.COLOR_BGR2GRAY)
-	# 		img_result  = DeepFace.verify(image1, image2, enforce_detection = False)
+		nparr1 = np.frombuffer(base64.b64decode(image['signinimage']), np.uint8)
+		nparr2 = np.frombuffer(base64.b64decode(image['registeredimage']), np.uint8)
+		image1 = cv2.imdecode(nparr1, cv2.COLOR_BGR2GRAY)
+		image2 = cv2.imdecode(nparr2, cv2.COLOR_BGR2GRAY)
+		print(image1)
+		print(image2)
+		print(nparr1)
+		print(nparr2)
+		# img_result  = DeepFace.verify(image1, image2, enforce_detection = False)
+		return 0
 	# 		if img_result["verified"] == True and password == password_candidate:
 	# 			results2 = cur.execute('UPDATE users set user_login = 1 where email = %s' , [email])
 	# 			mysql.connection.commit()

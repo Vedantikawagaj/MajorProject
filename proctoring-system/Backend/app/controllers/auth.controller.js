@@ -2,7 +2,7 @@ const config = require("../config/auth.config");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-const axios=require('axios');
+const axios = require('axios');
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
@@ -14,9 +14,9 @@ exports.signup = (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
-    image:req.body.imagelink
+    image: req.body.imagelink
   });
- 
+
   user.save((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -45,9 +45,9 @@ exports.signup = (req, res) => {
             }
             res.status(200).send({
               message: "User was registered successfully!"
-              
+
             });
-            
+
           });
         }
       );
@@ -69,9 +69,9 @@ exports.signup = (req, res) => {
 
           res.status(200).send({
             message: "User was registered successfully!"
-            
+
           });
-          
+
         });
       });
     }
@@ -80,78 +80,83 @@ exports.signup = (req, res) => {
 
 
 exports.signin = async (req, res) => {
-  // User.findOne({
-  //   email: req.body.email
-  // })
-  //   .populate("roles", "-__v")
-  //   .exec((err, user) => {
-  //     if (err) {
-  //       res.status(500).send({ message: err });
-  //       return;
-  //     }
+  User.findOne({
+    email: req.body.email
+  })
+    .populate("roles", "-__v")
+    .exec((err, user) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
 
-  //     if (!user) {
-  //       return res.status(404).send({ message: "User Not found.",
-  //       status:404 });
-  //     }
+      if (!user) {
+        return res.status(404).send({
+          message: "User Not found.",
+          status: 404
+        });
+      }
 
-  //     var passwordIsValid = bcrypt.compareSync(
-  //       req.body.password,
-  //       user.password
-  //     );
+      var passwordIsValid = bcrypt.compareSync(
+        req.body.password,
+        user.password
+      );
 
-  //     if (!passwordIsValid) {
-  //       return res.status(401).send({
-  //         accessToken: null,
-  //         message: "Invalid Password!",
-  //         status:401
-  //       });
-  //     }
+      if (!passwordIsValid) {
+        return res.status(401).send({
+          accessToken: null,
+          message: "Invalid Password!",
+          status: 401
+        });
+      }
 
-  //     var token = jwt.sign({ id: user.id }, config.secret, {
-  //       expiresIn: 86400 // 24 hours
-  //     });
+      var token = jwt.sign({ id: user.id }, config.secret, {
+        expiresIn: 86400 // 24 hours
+      });
 
-  //     var authorities = [];
+      var authorities = [];
 
-  //     for (let i = 0; i < user.roles.length; i++) {
-  //       console.log(user.roles[i])
-  //       authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
-  //     }
-  //     res.status(200).send({
-  //       message: "Login successful",
-  //       id: user._id,
-  //       firstname: user.firstname,
-  //       lastname: user.lastname,
-  //       email: user.email,
-  //       roles: authorities,
-  //       accessToken: token,
-  //       status:200
-  //     });
-  //   });
+      for (let i = 0; i < user.roles.length; i++) {
+        console.log(user.roles[i])
+        authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
+      }
+      // res.status(200).send({
+      //   message: "Login successful",
+      //   id: user._id,
+      //   firstname: user.firstname,
+      //   lastname: user.lastname,
+      //   email: user.email,
+      //   roles: authorities,
+      //   accessToken: token,
+      //   status:200
+      // });
 
-  var res = await axios.post("http://127.0.0.1:5000/verify-image", {
-    image : req.body.imagelink
+      var res = axios.post("http://127.0.0.1:5000/verify-image", {
+        signinimage: req.body.imagelink,
+        registeredimage: user.image
     
-  },{
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}).then(
-    (response) => {console.log(req.body.imagelink)
-        var result = response.data;
-        console.log(result);
-        res.status(200).send(result)
-    },
-    (error) => {
-        console.log(error);
-    }
-).catch(error => {
-  if (!error.response) {
-      // network error
-      this.errorStatus = 'Error: Network Error';
-  } else {
-      this.errorStatus = error.response.data.message;
-  }
-})
+  }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(
+        (response) => {
+          console.log(req.body.imagelink)
+          var result = response.data;
+          console.log(result);
+          res.status(200).send(result)
+        },
+        (error) => {
+          console.log(error);
+        }
+      ).catch(error => {
+        if (!error.response) {
+          // network error
+          this.errorStatus = 'Error: Network Error';
+        } else {
+          this.errorStatus = error.response.data.message;
+        }
+      })
+    });
+
 };

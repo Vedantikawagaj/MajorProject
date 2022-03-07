@@ -49,6 +49,7 @@ const Login = () => {
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
+        console.log(imageSrc)
       }, [webcamRef, setImgSrc]);
     
     return (
