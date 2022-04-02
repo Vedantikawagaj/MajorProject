@@ -19,19 +19,20 @@ const Login = () => {
             body: JSON.stringify({
                 "email": email,
                 "password": pw,
+                "imagelink": imgSrc,
             })
         })
-
-        const data = await res.json(); 
-        const data1 = JSON.stringify(data);
         
+        const data = await res.json();
+        const data1 = JSON.stringify(data);
+        console.log(data1)
         if (data.status === 200) {
             localStorage.setItem('user', data1);
             alert(data.message)
             history('/dashboard');
         }
         else {
-            
+
             alert(data.message);
             setemail('');
             setpw('');
@@ -50,8 +51,8 @@ const Login = () => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
         console.log(imageSrc)
-      }, [webcamRef, setImgSrc]);
-    
+    }, [webcamRef, setImgSrc]);
+
     return (
         <div>
             <section className="vh-100">
@@ -109,7 +110,7 @@ const Login = () => {
                                         mirrored={true}
 
                                     />
-                                     <div type="submit" className="btn btn-dark btn-sm btn-block btn-h mv2" onClick={capture}>Capture Image</div>
+                                    <div type="submit" className="btn btn-dark btn-sm btn-block btn-h mv2" onClick={capture}>Capture Image</div>
                                     {imgSrc && (
                                         <img
                                             src={imgSrc}
@@ -118,10 +119,10 @@ const Login = () => {
                                     )}
 
                                 </>
-                             
+
 
                                 <div type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleLogin}>Sign in</div>
-                    
+
                                 <h5 className="small fw-bold mt-2 pt-1 mb-0 f5">Don't have an account?
                                     <Link style={{ textDecoration: 'none' }} to='/register'>
                                         <h5

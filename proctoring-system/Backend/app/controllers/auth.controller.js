@@ -120,31 +120,41 @@ exports.signin = async (req, res) => {
         console.log(user.roles[i])
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       }
-      // res.status(200).send({
-      //   message: "Login successful",
-      //   id: user._id,
-      //   firstname: user.firstname,
-      //   lastname: user.lastname,
-      //   email: user.email,
-      //   roles: authorities,
-      //   accessToken: token,
-      //   status:200
-      // });
+      
 
-      var res = axios.post("http://127.0.0.1:5000/verify-image", {
+      axios.post("http://127.0.0.1:5000/verify-image", {
         signinimage: req.body.imagelink,
         registeredimage: user.image
-    
-  }, {
+
+      }, {
         headers: {
           'Content-Type': 'application/json'
         }
       }).then(
         (response) => {
-          console.log(req.body.imagelink)
+
           var result = response.data;
-          console.log(result);
-          res.status(200).send(result)
+          console.log(result.verified)
+          if (result.verified === true) {
+            
+            res.status(200).send({
+              message: "Login successful",
+              id: user._id,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              email: user.email,
+              roles: authorities,
+              accessToken: token,
+              status: 200
+            });
+          }
+          else {
+            res.status(401).send({
+              accessToken: null,
+              message: "User Image Verification Failed",
+              status: 401
+            });
+          }
         },
         (error) => {
           console.log(error);
@@ -158,5 +168,5 @@ exports.signin = async (req, res) => {
         }
       })
     });
-
+  // console.log(req.body)
 };

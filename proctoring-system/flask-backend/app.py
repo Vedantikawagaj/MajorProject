@@ -54,54 +54,10 @@ def make_session_permanent():
 def verifyImage():
 	if request.method == 'POST':
 		image = request.get_json()
-		# i=jsonify(image)
-		# print(image['signinimage'])
-		# print(i.signinimage)
-		# return image
+	
+		img_result  = DeepFace.verify(image['signinimage'], image['registeredimage'], enforce_detection = False)
+		return img_result
 
-	# 	form['image_hidden']
-	# 	cur = mysql.connection.cursor()
-	# 	results1 = cur.execute('SELECT uid, name, email, password, user_type, user_image from users where email = %s and user_type = %s and user_login = 0' , (email,user_type))
-	# 	if results1 > 0:
-	# 		cresults = cur.fetchone()
-	# 		imgdata2 = cresults['user_image']
-	# 		password = cresults['password']
-	# 		name = cresults['name']
-	# 		uid = cresults['uid']
-		nparr1 = np.frombuffer(base64.b64decode(image['signinimage']), np.uint8)
-		nparr2 = np.frombuffer(base64.b64decode(image['registeredimage']), np.uint8)
-		image1 = cv2.imdecode(nparr1, cv2.COLOR_BGR2GRAY)
-		image2 = cv2.imdecode(nparr2, cv2.COLOR_BGR2GRAY)
-		print(image1)
-		print(image2)
-		print(nparr1)
-		print(nparr2)
-		# img_result  = DeepFace.verify(image1, image2, enforce_detection = False)
-		return 0
-	# 		if img_result["verified"] == True and password == password_candidate:
-	# 			results2 = cur.execute('UPDATE users set user_login = 1 where email = %s' , [email])
-	# 			mysql.connection.commit()
-	# 			if results2 > 0:
-	# 				session['logged_in'] = True
-	# 				session['email'] = email
-	# 				session['name'] = name
-	# 				session['user_role'] = user_type
-	# 				session['uid'] = uid
-	# 				if user_type == "student":
-	# 					return redirect(url_for('student_index'))
-	# 				else:
-	# 					return redirect(url_for('professor_index'))
-	# 			else:
-	# 				error = 'Error Occurred!'
-	# 				return render_template('login.html', error=error)	
-	# 		else:
-	# 			error = 'Either Image not Verified or you have entered Invalid password or Already login'
-	# 			return render_template('login.html', error=error)
-	# 		cur.close()
-	# 	else:
-	# 		error = 'Already Login or Email was not found!'
-	# 		return render_template('login.html', error=error)
-	# return render_template('login.html')          
 
 if __name__ == "__main__":
 	app.run(host = "0.0.0.0",debug=False)        
