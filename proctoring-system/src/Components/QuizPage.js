@@ -4,6 +4,7 @@ import '../ComponentCSS/QuizPage.css';
 import Quiz from './Quiz';
 import { connect } from 'react-redux';
 import { ActionTypes } from '../constants/actionTypes';
+import FaceApi from './FaceApi';
 
 const mapStateToProps = state => { return { ...state.quiz } };
 
@@ -70,6 +71,7 @@ class QuizPage extends Component {
         </header>
         
         <Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode={this.state.mode} />
+        <FaceApi/>
       </div>
     );
   }
