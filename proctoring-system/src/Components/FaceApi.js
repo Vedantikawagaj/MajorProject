@@ -69,7 +69,7 @@ function FaceApi() {
             console.log("No Person Found on camera")
         }
       }
-    }, 100)
+    }, 3000)
   }
 
 
