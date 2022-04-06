@@ -4,7 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/flask-backend/models
+/flask-backend/pose_model
+/flask-backend/trained_models
+/public/models
+/Backend/node_modules
 # testing
 /coverage
 
