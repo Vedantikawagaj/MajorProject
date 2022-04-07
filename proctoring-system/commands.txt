@@ -20,3 +20,6 @@ move pose_model in flask backend
 put shape predictor in trained models
 npm i face-api.js
 python -m flask run
+npm i react-datepicker
+npm install --save prop-types
+npm install react-router@5.2.0

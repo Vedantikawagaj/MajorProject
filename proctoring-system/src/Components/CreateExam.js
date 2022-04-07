@@ -2,13 +2,16 @@ import SideNavbar from "./SideNavbar"
 import '../ComponentCSS/SideNavbar.css'
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 
+import "react-datepicker/dist/react-datepicker.css";
 const CreateExam = () => {
     // let {user} = useParams();
     const [title, settitle] = useState('');
     const [duration, setduration] = useState(0);
     const [marks, setmarks] = useState(0);
- 
+    const [examDate, setexamDate] = useState(new Date());
+    // const [startDate, setStartDate] = useState();
     
     const handleExamCreation = async () => {
         
@@ -21,13 +24,17 @@ const CreateExam = () => {
             body: JSON.stringify({
                 "title": title,
                 "duration": duration * 1000*60,
-                "totalMarks": marks
+                "totalMarks": marks,
+                "examDate": examDate.getDate(),
+                "examMonth": examDate.getMonth(),
+             
             })
         })
 
         const data = await res.json();
         console.log(data)
         alert("Exam created successfully");
+        // console.log(examDate.getMonth() , examDate.getDate())
     }
     const [user,setuser]=useState({});
     useEffect(() => {
@@ -100,6 +107,12 @@ const CreateExam = () => {
                                         />
                                     </div>
                                 </div>
+                            </div>
+                            <div className="form-outline mb-4 ">
+                                <h5 className="tl pl1 ">Enter Date of Exam</h5>
+                             
+                                <DatePicker selected={examDate} onChange={(date) => setexamDate(date)} />
+                           
                             </div>
                                 <div className="mh7">
                                 <Link to='/dashboard' style={{ textDecoration: 'none' }}>

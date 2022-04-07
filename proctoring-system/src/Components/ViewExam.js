@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ViewExam = () => {
     let [exams, setexams] = useState([]);
-
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     useEffect(() => {
         const handleViewExam = async (id) => {
             const stringUser = await localStorage.getItem('user');
@@ -22,6 +22,7 @@ const ViewExam = () => {
                 })
 
                 const data1 = await res.json();
+                console.log(data1)
                 setexams(data1);
             }
 
@@ -55,8 +56,9 @@ const ViewExam = () => {
                                                     <div className="widget-49">
                                                         <div className="widget-49-title-wrapper pt3">
                                                             <div className="widget-49-date-primary">
-                                                                <span className="widget-49-date-day">09</span>
-                                                                <span className="widget-49-date-month">apr</span>
+                                                                <span className="widget-49-date-day">{item.examDate}</span>
+                                                                <span className="widget-49-date-month">{months[item.examMonth]}</span>
+                                                         
                                                             </div>
                                                             <div className="widget-49-meeting-info">
                                                                 <span className="widget-49-pro-title b f-6">{item.title}</span>
@@ -98,7 +100,7 @@ const ViewExam = () => {
                                                                 Delete Exam
                                     </button>
                                                         </Link>
-                                                        <Link to={`/update-exam/${item._id}`} style={{ textDecoration: 'none' }}>
+                                                        <Link to={`/start-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"
                                                                 className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"

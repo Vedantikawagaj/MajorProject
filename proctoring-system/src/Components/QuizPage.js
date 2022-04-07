@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { ActionTypes } from '../constants/actionTypes';
 import FaceApi from './FaceApi';
 
+
 const mapStateToProps = state => { return { ...state.quiz } };
 
 const mapDispatchToProps = dispatch => ({
@@ -14,6 +15,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class QuizPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      eid: this.props.match.params.eid
+    };
+  }
+  
   state = {
     quizes: [
       { id: 'data/javascript.json', name: 'Javascript' },
@@ -21,7 +29,8 @@ class QuizPage extends Component {
       { id: 'data/csharp.json', name: 'C Sharp' },
       { id: 'data/designPatterns.json', name: 'Design Patterns' }
     ],
-    quizId: 'data/javascript.json'
+    quizId: 'data/javascript.json',
+    
   };
 
   pager = {
@@ -36,11 +45,12 @@ class QuizPage extends Component {
 
   load(quizId) {
     let url = quizId || this.props.quizId;
+    console.log(this.state.eid)
     fetch('http://localhost:8080/api/question/vq/1001').then(res => res.json()).then(res => {
       // let quiz = res;
       let quiz = {};
       quiz.question = res;
-      console.log(quiz);
+      // console.log(quiz);
       quiz.question.forEach(q => {
         q.selected = false;
         q.s_ans = "";
@@ -59,6 +69,7 @@ class QuizPage extends Component {
   }
 
   render() {
+    
     return (
       <div className="container">
         <header className="p-2">

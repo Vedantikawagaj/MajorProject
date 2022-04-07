@@ -7,7 +7,9 @@ var examschema = new mongoose.Schema({
   userid:Number,
   title: String,
   duration: Date,
-  totalMarks: Number
+  totalMarks: Number,
+  examDate: Number,
+  examMonth:Number
 })
 
 examschema.plugin(autoIncrementuser.plugin, {

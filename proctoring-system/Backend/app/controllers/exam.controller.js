@@ -11,7 +11,9 @@ exports.generateExam = (req, res) => {
         userid: uid,
         title: req.body.title,
         duration: req.body.duration,
-        totalMarks: req.body.totalMarks
+        totalMarks: req.body.totalMarks,
+        examDate: req.body.examDate,
+        examMonth: req.body.examMonth,
     });
 
     exam.save((err, exam) => {
@@ -105,7 +107,8 @@ exports.updateExam = (req, res) => {
         // examid: parseInt(examid),
         title: req.body.title,
         duration: req.body.duration,
-        totalMarks: req.body.totalMarks
+        totalMarks: req.body.totalMarks,
+        examDate: req.body.examDate
     },{useFindAndModify:false}).then((data)=>{
         if(!data)
             res.status(404).send({
