@@ -19,3 +19,4 @@ pip install opencv-contrib-python
 move pose_model in flask backend
 put shape predictor in trained models
 npm i face-api.js
+python -m flask run
