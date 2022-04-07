@@ -5,34 +5,33 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ViewQuestions = () => {
     let [exams, setexams] = useState([]);
-
-    const handleViewExam = async () => {
-        let user = {};
-
-        user = await getuserdata();
-
-        const res = await fetch('http://localhost:8080/api/exam/ve/' + user.id, {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json'
-
-            },
-
-        })
-
-        const data = await res.json();
-        setexams(data);
-
-    }
-    const getuserdata=async()=>{
-        const stringUser = await localStorage.getItem('user');
-        return JSON.parse(stringUser)
-    }
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     useEffect(() => {
+        const handleViewExam = async (id) => {
+            const stringUser = await localStorage.getItem('user');
+            if (stringUser) {
+                let data = JSON.parse(stringUser);
 
-        handleViewExam();
+                const res = await fetch('http://localhost:8080/api/exam/ve/' + data.id, {
+                    method: 'get',
+                    headers: {
+                        'Content-Type': 'application/json'
+
+                    },
+
+                })
+
+                const data1 = await res.json();
+                console.log(data1)
+                setexams(data1);
+            }
+
+
+        }
+        handleViewExam()
+
     }, [])
-    
+
     return (
         <div className='dashboard'>
             <SideNavbar />
@@ -58,8 +57,9 @@ const ViewQuestions = () => {
                                                     <div className="widget-49">
                                                         <div className="widget-49-title-wrapper pt3">
                                                             <div className="widget-49-date-primary">
-                                                                <span className="widget-49-date-day">09</span>
-                                                                <span className="widget-49-date-month">apr</span>
+                                                                <span className="widget-49-date-day">{item.examDate}</span>
+                                                                <span className="widget-49-date-month">{months[item.examMonth]}</span>
+
                                                             </div>
                                                             <div className="widget-49-meeting-info">
                                                                 <span className="widget-49-pro-title b f-6">{item.title}</span>
@@ -92,7 +92,7 @@ const ViewQuestions = () => {
                                                                 View Questions
                                     </button>
                                                         </Link>
-                                                       
+
                                                     </div>
                                                 </div>
                                             </div>

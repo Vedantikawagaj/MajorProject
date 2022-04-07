@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useEffect, useState } from 'react'
+// import {  } from 'react-router';
 import '../ComponentCSS/QuestionDashboard.css'
 import '../ComponentCSS/SideNavbar.css'
 import SideNavbar from './SideNavbar'
-import { Link } from "react-router-dom"
+import { Link,useParams } from "react-router-dom"
 const QuestionDashboard = () => {
-    let { eid } = useParams();
+    const { eid } = useParams();
     let [questions, setquestions] = useState([]);
     const handleViewQuestion = async () => {
 
+        console.log(eid)
         const res = await fetch('http://localhost:8080/api/question/vq/' + eid, {
             method: 'get',
             headers: {
@@ -121,7 +122,8 @@ const QuestionDashboard = () => {
                     }
                 </div>
             </div>
-        </div>
+        
+            </div>
         // </div>
     )
 }
