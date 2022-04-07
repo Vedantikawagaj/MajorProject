@@ -31,8 +31,8 @@ const CreateExam = () => {
     }
     const [user,setuser]=useState({});
     useEffect(() => {
-         const getuserdata=async()=>{
-            const stringUser = await localStorage.getItem('user');
+        const getuserdata=()=>{
+            const stringUser = localStorage.getItem('user');
             setuser(JSON.parse(stringUser));
         }
         getuserdata();

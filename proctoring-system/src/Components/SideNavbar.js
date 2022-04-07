@@ -2,14 +2,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import '../ComponentCSS/SideNavbar.css'
-import Dashboard from './Dashboard';
-// import '../ComponentJS/SideNavbarJS'
+
+import { useNavigate } from 'react-router-dom';
 const SideNavbar = () => {
     var [examclassname, setexamclassname] = useState("dashboard-nav-dropdown");
     var [quesclassname, setquesclassname] = useState("dashboard-nav-dropdown");
     var [showExam, setshowExam] = useState(false);
     var [showQuestion, setshowQuestion] = useState(false);
-    // var [showDashboard, setshowDashboard] = useState(true)
+
+
+    const history = useNavigate();
     const toggleExam = () => {
         setshowExam(!showExam);
         if (showExam) {
@@ -20,6 +22,7 @@ const SideNavbar = () => {
         }
         console.log(examclassname);
     }
+   
     const toggleQuestion = () => {
         setshowQuestion(!showQuestion);
         if (showQuestion) {
@@ -30,9 +33,12 @@ const SideNavbar = () => {
         }
         console.log(quesclassname);
     }
-    // const handleDashboard = () => {
-    //     setshow(!show);
-    // }
+   
+    
+    // const logoutClicked = () => {
+    //     localStorage.clear(); //if you want to clear localstorage data
+    //     history("/"); //redirect to login
+    //   };
     return (
 
         <div className="dashboard-nav">
@@ -108,31 +114,6 @@ const SideNavbar = () => {
                         Publish Result
                     </a>
 
-                {/* <div className='dashboard-nav-dropdown'><a className="dashboard-nav-item dashboard-nav-dropdown-toggle"><i className="fas fa-users"></i> Users </a>
-                        <div className='dashboard-nav-dropdown-menu'>
-                            <a className="dashboard-nav-dropdown-item">
-                                All
-                            </a>
-
-                            <a className="dashboard-nav-dropdown-item">
-                                Subscribed
-                            </a>
-
-                            <a className="dashboard-nav-dropdown-item">
-                                Non-subscribed
-                            </a>
-
-                            <a className="dashboard-nav-dropdown-item">
-                                Banned
-                            </a>
-
-                            <a className="dashboard-nav-dropdown-item">
-                                New
-                            </a>
-                        </div>
-                    </div> */}
-
-
                 <a className="dashboard-nav-item">
                     <i className="fas fa-cogs"></i>
                         Settings
@@ -140,10 +121,12 @@ const SideNavbar = () => {
 
                 <div className="nav-item-divider"></div>
 
-                <a className="dashboard-nav-item">
+                {/* <h6 className="dashboard-nav-item" onClick={logoutClicked}> */}
+                <h6 className="dashboard-nav-item" >
+
                     <i className="fas fa-sign-out-alt"></i>
                         Logout
-                    </a>
+                    </h6>
 
             </nav>
         </div>

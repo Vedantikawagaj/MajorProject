@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ViewQuestions = () => {
     let [exams, setexams] = useState([]);
-    const [userid, setuserid] = useState(201);
-    const handleViewExam = async () => {
 
-        const res = await fetch('http://localhost:8080/api/exam/ve/' + userid, {
+    const handleViewExam = async () => {
+        let user = {};
+
+        user = await getuserdata();
+
+        const res = await fetch('http://localhost:8080/api/exam/ve/' + user.id, {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,9 +24,15 @@ const ViewQuestions = () => {
         setexams(data);
 
     }
+    const getuserdata=async()=>{
+        const stringUser = await localStorage.getItem('user');
+        return JSON.parse(stringUser)
+    }
     useEffect(() => {
-        handleViewExam()
+
+        handleViewExam();
     }, [])
+    
     return (
         <div className='dashboard'>
             <SideNavbar />

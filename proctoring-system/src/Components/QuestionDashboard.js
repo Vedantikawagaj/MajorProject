@@ -20,8 +20,7 @@ const QuestionDashboard = () => {
 
         const data = await res.json();
         setquestions(data);
-        // alert("Exam created successfully");
-        // console.log(data);
+        
 
 
     }
