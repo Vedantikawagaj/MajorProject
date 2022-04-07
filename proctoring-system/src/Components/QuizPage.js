@@ -15,12 +15,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class QuizPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eid: this.props.match.params.eid
-    };
-  }
+  
   
   state = {
     quizes: [
@@ -44,9 +39,9 @@ class QuizPage extends Component {
   }
 
   load(quizId) {
-    let url = quizId || this.props.quizId;
-    console.log(this.state.eid)
-    fetch('http://localhost:8080/api/question/vq/1001').then(res => res.json()).then(res => {
+
+    const examid = this.props.examid
+    fetch('http://localhost:8080/api/question/vq/' + examid).then(res => res.json()).then(res => {
       // let quiz = res;
       let quiz = {};
       quiz.question = res;

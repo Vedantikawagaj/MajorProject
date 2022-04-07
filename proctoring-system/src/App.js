@@ -1,11 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Navbar from './Components/Navbar';
-import Login from './Components/Login';
 import LoginPage from './Components/LoginPage';
 import RegisterPage from './Components/RegisterPage';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
-import SideNavbar from './Components/SideNavbar';
 import Dashboard from './Components/Dashboard';
 import CreateExam from './Components/CreateExam';
 import ViewExam from './Components/ViewExam';
@@ -18,6 +15,7 @@ import QuestionDashboard from './Components/QuestionDashboard';
 import UpdateQuestion from './Components/UpdateQuestion';
 import DeleteQuestion from './Components/DeleteQuestion';
 import QuizPage from './Components/QuizPage';
+import FunctionalQuiz from './Components/FunctionalQuiz';
 
 
 
@@ -40,7 +38,7 @@ function App() {
         <Route path='/question-dashboard/:eid' element={ <QuestionDashboard/>}/>
         <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
         <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
-        <Route path='/start-exam/:eid' element={ <QuizPage/>}/>
+        <Route path='/start-exam/:eid' element={ <FunctionalQuiz/>}/>
         
       </Routes>
     </div>
