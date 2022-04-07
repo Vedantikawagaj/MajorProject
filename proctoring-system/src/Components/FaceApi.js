@@ -21,6 +21,9 @@ function FaceApi() {
         faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
         faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
       ]).then(startVideo);
+      // console.log(MODEL_URL)
+      // startVideo()
+
     }
     loadModels();
     // handleVideoOnPlay();
@@ -69,7 +72,7 @@ function FaceApi() {
             console.log("No Person Found on camera")
         }
       }
-    }, 3000)
+    }, 1000)
   }
 
 
