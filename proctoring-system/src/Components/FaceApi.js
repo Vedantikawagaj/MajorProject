@@ -1,6 +1,6 @@
 import * as faceapi from 'face-api.js';
 import React from 'react';
-
+import '../ComponentCSS/faceapi.css';
 function FaceApi() {
 
 //   const [modelsLoaded, setModelsLoaded] = React.useState(false);
@@ -80,7 +80,7 @@ function FaceApi() {
     <div>
       
       <div style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
-      <video ref={videoRef} width="440" height="200" autoPlay muted />
+      <video id='video-element' ref={videoRef} width="440" height="200" autoPlay muted/>
       <canvas ref={canvasRef} style={{ position: 'absolute' }} />
       </div>
     </div>
