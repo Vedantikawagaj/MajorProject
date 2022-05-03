@@ -16,6 +16,7 @@ import UpdateQuestion from './Components/UpdateQuestion';
 import DeleteQuestion from './Components/DeleteQuestion';
 import QuizPage from './Components/QuizPage';
 import FunctionalQuiz from './Components/FunctionalQuiz';
+import AddStudents from './Components/AddStudents';
 
 
 
@@ -39,7 +40,7 @@ function App() {
         <Route path='/update-question/:qid/:eid' element={ <UpdateQuestion/>}/>
         <Route path='/delete-question/:qid' element={ <DeleteQuestion/>}/>
         <Route path='/start-exam/:eid' element={ <FunctionalQuiz/>}/>
-        
+        <Route path='/addemail/:eid' element={ <AddStudents/>}/>
       </Routes>
     </div>
       

@@ -9,14 +9,15 @@ var examschema = new mongoose.Schema({
   duration: Date,
   totalMarks: Number,
   examDate: Number,
-  examMonth:Number
+  examMonth:Number,
+  _id:Number
 })
 
-examschema.plugin(autoIncrementuser.plugin, {
-  model: 'Exam',
-  field: '_id',
-  startAt: 1001
-});
+// examschema.plugin(autoIncrementuser.plugin, {
+//   model: 'Exam',
+//   field: '_id',
+//   startAt: 1001
+// });
 
 const Exam = mongoose.model(
   "Exam", examschema

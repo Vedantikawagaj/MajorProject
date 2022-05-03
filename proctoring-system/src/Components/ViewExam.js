@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const ViewExam = () => {
     let [exams, setexams] = useState([]);
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     useEffect(() => {
         const handleViewExam = async (id) => {
             const stringUser = await localStorage.getItem('user');
             if (stringUser) {
                 let data = JSON.parse(stringUser);
-        
+
                 const res = await fetch('http://localhost:8080/api/exam/ve/' + data.id, {
                     method: 'get',
                     headers: {
@@ -58,7 +58,7 @@ const ViewExam = () => {
                                                             <div className="widget-49-date-primary">
                                                                 <span className="widget-49-date-day">{item.examDate}</span>
                                                                 <span className="widget-49-date-month">{months[item.examMonth]}</span>
-                                                         
+
                                                             </div>
                                                             <div className="widget-49-meeting-info">
                                                                 <span className="widget-49-pro-title b f-6">{item.title}</span>
@@ -90,7 +90,7 @@ const ViewExam = () => {
                                                                 className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 Update Exam
-                                    </button>
+                                                            </button>
                                                         </Link>
                                                         <Link to={`/delete-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
@@ -98,7 +98,7 @@ const ViewExam = () => {
                                                                 className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 Delete Exam
-                                    </button>
+                                                            </button>
                                                         </Link>
                                                         <Link to={`/start-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
@@ -106,7 +106,16 @@ const ViewExam = () => {
                                                                 className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 Start Exam
-                                    </button>
+                                                            </button>
+                                                        </Link>
+
+                                                        <Link to={`/addemail/${item._id}`} style={{ textDecoration: 'none' }}>
+                                                            <button
+                                                                type="submit"
+                                                                className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
+                                                            >
+                                                                Send Mail
+                                                            </button>
                                                         </Link>
                                                     </div>
                                                 </div>
