@@ -100,14 +100,14 @@ const ViewExam = () => {
                                                                 Delete Exam
                                                             </button>
                                                         </Link>
-                                                        <Link to={`/start-exam/${item._id}`} style={{ textDecoration: 'none' }}>
+                                                        {/* <Link to={`/start-exam/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button
                                                                 type="submit"
                                                                 className="btn btn-coloe btn-md btn-block justify-center items-center-l grow mv2 br4"
                                                             >
                                                                 Start Exam
                                                             </button>
-                                                        </Link>
+                                                        </Link> */}
 
                                                         <Link to={`/addemail/${item._id}`} style={{ textDecoration: 'none' }}>
                                                             <button

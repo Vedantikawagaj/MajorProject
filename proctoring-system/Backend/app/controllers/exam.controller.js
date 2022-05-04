@@ -82,6 +82,28 @@ exports.viewParticularExam = (req, res) => {
     
 };
 
+exports.searchExam = (req, res) => {
+    const eid = req.body.eid;
+    Exam.find({_id: eid})
+    .then((data)=>{
+        if(!data)
+            res.status(404).send({
+                status: 404
+            })
+        else{
+            res.status(200).send({
+                status: 200
+            })
+            
+        }    
+    }).catch((err)=>{
+        res.status(500).send({
+            status: 500
+        })
+    })
+    
+};
+
 exports.deleteExam = (req, res) => {
     
     const examid = req.params.examid;
@@ -282,7 +304,7 @@ exports.sendmail = async(req, res) => {
       from: '<noreply@apnakaamkar.gmail.com>', // sender address
       to: req.body.email, // list of receivers
       subject: "Exam Credentials", // Subject line
-      text: "Hello Bachoo....This is your test id " + req.body.examid, // plain text body
+      text: "Hello Students...This is your test id " + req.body.examid, // plain text body
     //   html: "<b>Hello world?</b>", // html body
     }, function(err, info) {
         if (err) {

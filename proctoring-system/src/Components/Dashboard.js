@@ -7,6 +7,7 @@ const Dashboard = () => {
          const getuserdata=async()=>{
             const stringUser = await localStorage.getItem('user');
             setuser(JSON.parse(stringUser));
+            console.log(JSON.parse(stringUser))
         }
         getuserdata();
     }, [])
