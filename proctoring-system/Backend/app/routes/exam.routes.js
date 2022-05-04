@@ -26,4 +26,5 @@ module.exports = function(app) {
   app.delete("/api/question/dq/:qid", controller.deleteQuestion);
   app.put("/api/question/uq/:qid", controller.updateQuestion);
   app.get("/api/question/vpq/:qid", controller.viewParticularQuestion);
+  app.post("/api/sendmail",controller.sendmail)
 };

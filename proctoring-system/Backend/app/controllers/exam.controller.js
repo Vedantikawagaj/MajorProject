@@ -3,7 +3,7 @@ const db = require("../models");
 const User = db.user;
 const Exam = db.exam;
 const Question = db.question;
-
+const nodemailer = require("nodemailer");
 exports.generateExam = (req, res) => {
     console.log(req.body);
     const uid = req.params.uid;
@@ -14,6 +14,7 @@ exports.generateExam = (req, res) => {
         totalMarks: req.body.totalMarks,
         examDate: req.body.examDate,
         examMonth: req.body.examMonth,
+        _id: Math.floor(Math.random() * 9945365487)
     });
 
     exam.save((err, exam) => {
@@ -257,5 +258,45 @@ exports.viewParticularQuestion = (req, res) => {
             message: "Server error"
         })
     })
+    
+};
+
+
+exports.sendmail = async(req, res) => {
+    console.log("hello",req.body)
+    // let testAccount = await nodemailer.createTestAccount();
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: "rajsahoo7350@gmail.com", // generated ethereal user
+        pass: "apnakaamkar", // generated ethereal password
+      },
+    });
+  
+    // send mail with defined transport object
+    transporter.sendMail({
+      from: '<noreply@apnakaamkar.gmail.com>', // sender address
+      to: req.body.email, // list of receivers
+      subject: "Exam Credentials", // Subject line
+      text: "Hello Bachoo....This is your test id " + req.body.examid, // plain text body
+    //   html: "<b>Hello world?</b>", // html body
+    }, function(err, info) {
+        if (err) {
+          console.log(err)
+        } else {
+            res.status(200).send(info.messageId);
+        }
+     });
+  
+    // console.log("Message sent: %s", info);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  
+
+    
+    
     
 };

@@ -8,27 +8,27 @@ const Register = () => {
     const [email, setemail] = useState('');
     const [pw, setpw] = useState('');
     const [roles, setroles] = useState([]);
-    const handleRegister = async () => {
+    const handleRegister =  () => {
 
-        const res = await fetch('http://localhost:8080/api/auth/signup', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
+        // const res = await fetch('http://localhost:8080/api/auth/signup', {
+        //     method: 'post',
+        //     headers: {
+        //         'Content-Type': 'application/json'
 
-            },
-            body: JSON.stringify({
-                "firstname": fn,
-                "lastname": ln,
-                "email": email,
-                "password": pw,
-                "imagelink":imgSrc,
-                "roles": roles
-            })
-        })
+        //     },
+        //     body: JSON.stringify({
+        //         "firstname": fn,
+        //         "lastname": ln,
+        //         "email": email,
+        //         "password": pw,
+        //         "imagelink":imgSrc,
+        //         "roles": roles
+        //     })
+        // })
 
-        const data = await res.json();
+        // const data = await res.json();
         alert("Registration successful");
-        console.log(data);
+        // console.log(data);
 
 
     }

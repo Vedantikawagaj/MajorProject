@@ -41,7 +41,6 @@ function FaceApi() {
       .catch(err => {
         console.error("error:", err);
       });
-      captureSnapshot()
       handleVideoOnPlay()
   }
 
@@ -76,60 +75,13 @@ function FaceApi() {
     }, 1000)
   }
 
-  var stream = document.getElementById("stream");
-  var capture = document.getElementById("capture");
-  var cameraStream = null;
-  var array = null;
-  // var values = 0;
-  // var length = null; 
-  async function captureSnapshot() {
-  
-    // if( null != cameraStream ) 
-    {
-      var ctx = canvasRef.current.getContext('2d');
-      var img = new Image();
-      ctx.drawImage( stream, 0, 0, canvasRef.width, canvasRef.height );
-      img.src = capture.toDataURL( "image/png" );
-      img.width	= 340;
-      var d1 = capture.toDataURL("image/png");
-      var res = d1.replace("data:image/png;base64,", "");
 
-        // var average = values / length;
-
-        // console.log(average)
-        // console.log(Math.round(average - 40));
-
-        // if(average)
-        {
-            const res = await fetch('http://127.0.0.1:5000/video_feed', {
-              method: 'post',
-              headers: {
-                  'Content-Type': 'application/json'
-
-              },
-              body: JSON.stringify( {'imgData':res})
-
-          })
-
-        const data = await res.json();
-        console.log(data)
-            // $.post("/video_feed",{
-            //     data : {'imgData':res,'voice_db':average,'testid': tid}},
-            //     function(data){
-            //     console.log(data);
-            //     });
-        }
-
-      } 
-      setTimeout(captureSnapshot, 5000);
-    } 
-  
   return (
     <div>
       
       <div style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
       <video id='video-element' ref={videoRef} width="440" height="200" autoPlay muted/>
-      <canvas id="capture" ref={canvasRef} style={{ position: 'absolute' }} />
+      <canvas ref={canvasRef} style={{ position: 'absolute' }} />
       </div>
     </div>
   );
