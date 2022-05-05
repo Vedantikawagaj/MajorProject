@@ -43,7 +43,7 @@ def video_feed():
 		image = request.get_json()
 		# print(image)
 		proctorData = camera.get_frame(image['ssimage'])
-		jpg_as_text = proctorData['jpg_as_text']
+		# jpg_as_text = proctorData['jpg_as_text']
 		mob_status =proctorData['mob_status']
 		person_status = proctorData['person_status']
 		user_move1 = proctorData['user_move1']

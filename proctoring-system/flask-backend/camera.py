@@ -333,22 +333,22 @@ def get_frame(imgData):
         if int(classes[0][i] == 0):
             count +=1
         if int(classes[0][i] == 67):
-            print('Mobile Phone detected')
-            mob_status = 1
+            # print()
+            mob_status = 'Mobile Phone detected'
         else:
-            print('Not Mobile Phone detected')
-            mob_status = 0
+            # print()
+            mob_status = 'Not Mobile Phone detected'
         print(mob_status)
 
     if count == 0:
-        print('No person detected')
-        person_status = 1
+        # print()
+        person_status = 'No person detected'
     elif count > 1: 
-        print('More than one person detected')
-        person_status = 2
+        # print()
+        person_status = 'More than one person detected'
     else:
-        print('Normal')
-        person_status = 0 
+        # print()
+        person_status = 'Normal'
 
     image = draw_outputs(image, (boxes, scores, classes, nums), class_names)
             
@@ -391,22 +391,22 @@ def get_frame(imgData):
                 ang2 = 90
                 
             if ang1 >= 48:
-                user_move1 = 2
-                print('Head down')
+                user_move1 = 'Head down'
+                # print()
             elif ang1 <= -48:
-                user_move1 = 1
-                print('Head up')
+                user_move1 = 'Head up'
+                # print()
             else:
-                user_move1 = 0
+                user_move1 = 'Head Center'
 
             if ang2 >= 48:
-                print('Head right')
-                user_move2 = 4
+                # print('')
+                user_move2 = 'Head right'
             elif ang2 <= -48:
-                print('Head left')
-                user_move2 = 3
+                # print()
+                user_move2 = 'Head left'
             else:
-                user_move2 = 0
+                user_move2 = 'Head Center'
 
        
     ret, jpeg = cv2.imencode('.jpg', image)
