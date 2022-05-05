@@ -11,4 +11,5 @@ db.role = require("./role.model");
 db.ROLES = ["student", "teacher"];
 db.question = require("./question.model");
 db.exam = require("./exam.model");
+db.reportlog = require("./reportlog.model");
 module.exports = db;

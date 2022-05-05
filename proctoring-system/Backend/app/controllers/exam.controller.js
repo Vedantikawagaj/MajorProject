@@ -3,6 +3,7 @@ const db = require("../models");
 const User = db.user;
 const Exam = db.exam;
 const Question = db.question;
+const ReportLog = db.reportlog
 const nodemailer = require("nodemailer");
 exports.generateExam = (req, res) => {
     console.log(req.body);
@@ -64,6 +65,60 @@ exports.viewExam = (req, res) => {
 exports.viewParticularExam = (req, res) => {
     const eid = req.params.eid;
     Exam.find({ _id: eid })
+        .then((data) => {
+            if (!data)
+                res.status(404).send({
+                    message: "No Exams found"
+                })
+            else {
+                // console.log(data[2].duration.getUTCMinutes());
+                res.status(200).send(data);
+
+            }
+        }).catch((err) => {
+            res.status(500).send({
+                message: "Server error"
+            })
+        })
+
+};
+
+exports.generateLog = (req, res) => {
+    console.log(req.body);
+    const uid = req.params.uid;
+    const log = new ReportLog({
+        userid: uid,
+        log: req.body.log,
+        timestamp: req.body.timestamp,
+        examid: req.body.examid,
+        _id: Math.floor(Math.random() * 9945365487)
+    });
+
+    log.save((err, log) => {
+        if (err) {
+            res.status(500).send({ message: err });
+            console.log(err)
+            return;
+        }
+
+        if (req.body) {
+            log.save(err => {
+                if (err) {
+                    res.status(500).send({ message: err });
+                    console.log(err)
+                    return;
+                }
+
+                res.send({ message: "log created successfully!" });
+            });
+
+        }
+    });
+};
+
+exports.viewLogOfExam = (req, res) => {
+    const eid = req.params.eid;
+    ReportLog.find({ _id: eid })
         .then((data) => {
             if (!data)
                 res.status(404).send({
