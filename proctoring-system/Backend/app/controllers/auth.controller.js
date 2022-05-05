@@ -14,7 +14,8 @@ exports.signup = (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
-    image: req.body.imagelink
+    image: req.body.imagelink,
+    _id: Math.floor(Math.random() * 9945365487)
   });
 
   user.save((err, user) => {

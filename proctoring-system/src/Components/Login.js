@@ -50,7 +50,10 @@ const Login = () => {
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
-        console.log(imageSrc)
+        // var d1 = imageSrc.toDataURL("image/png");
+        var res = imageSrc.replace("data:image/png;base64,", "");
+        // console.log(imageSrc)
+        // setImgSrc(res);
     }, [webcamRef, setImgSrc]);
 
     return (
@@ -106,6 +109,7 @@ const Login = () => {
                                         height={200}
                                         width={445}
                                         videoConstraints={videoConstraints}
+                                        // screenshotFormat="image/png"
                                         screenshotFormat="image/jpeg"
                                         mirrored={true}
 

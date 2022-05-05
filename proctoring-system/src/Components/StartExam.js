@@ -1,11 +1,11 @@
 import SideNavbar from "./SideNavbar"
 import '../ComponentCSS/SideNavbar.css'
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams,useNavigate  } from "react-router-dom"
 import { useState } from "react";
 
 const StartExam = () => {
     const [examid, setexamid] = useState('');
-    
+    let history = useNavigate();
 
     const examsearch = async () => {
 
@@ -24,6 +24,14 @@ const StartExam = () => {
         const data = await res.json();
         console.log(data)
         setexamid('');
+        if(data.status===200)
+            history(`/start-exam/${examid}`);
+
+        else{
+            alert("Exam not Found");
+            history('/dashboard');
+        }
+        
     }
 
     return (
@@ -39,12 +47,12 @@ const StartExam = () => {
                         </div>
                         <form>
                             <div className="form-outline mb-4 ">
-                                <h6 className="tl pl1 ">Please Enter Your Exam ID </h6>
+                                <h6 className="tl pl1 ">Please Enter Your Exam ID: </h6>
                                 <input
                                     type="text"
                                     id="form1Example13"
                                     className="form-control form-control-lg "
-                                    placeholder="examid"
+                                    placeholder="Exam id"
                                     value={examid}
                                     onChange={(val) => {
                                         setexamid(val.target.value)
@@ -55,15 +63,8 @@ const StartExam = () => {
                             </div>
 
                             <div className="mh7 mv2">
-                                <Link to={`/start-exam/${examid}`} style={{ textDecoration: 'none' }}>
-                                    <button
-                                        type="submit"
-                                        className="btn btn-coloe btn-lg btn-block justify-center items-center-l grow"
-                                        onClick={examsearch}
-                                    >
-                                        Start Test
-                                    </button>
-                                </Link>
+                            <div type="submit" className="btn btn-primary btn-lg btn-block" onClick={examsearch}>Start Exam</div>
+
                             </div>
 
 

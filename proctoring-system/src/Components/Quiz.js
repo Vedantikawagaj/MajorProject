@@ -60,7 +60,7 @@ class Quiz extends Component {
                         <hr />
                         <button id="quiz" className="btn btn-info" onClick={this.setMode}>Quiz</button>
                         <button id="review" className="btn btn-info" onClick={this.setMode}>Review</button>
-                        <button id="submit" className="btn btn-success" onClick={this.setMode}>Submit Quiz</button >
+                        <button id="submit" className="btn btn-success" onClick={this.setMode}>Submit</button >
 
                     </div >
                     

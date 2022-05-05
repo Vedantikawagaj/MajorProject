@@ -30,7 +30,9 @@ def make_session_permanent():
 def verifyImage():
 	if request.method == 'POST':
 		image = request.get_json()
-	
+		# proctorData = camera.get_frame(image['signinimage'])
+		# print(proctorData)
+		# hello = "hello"
 		img_result  = DeepFace.verify(image['signinimage'], image['registeredimage'], enforce_detection = False)
 		return img_result
 

@@ -41,113 +41,114 @@ exports.generateExam = (req, res) => {
 
 exports.viewExam = (req, res) => {
     const uid = req.params.uid;
-    Exam.find({userid: uid})
-    .then((data)=>{
-        if(!data)
-            res.status(404).send({
-                message: "No Exams found"
+    Exam.find({ userid: uid })
+        .then((data) => {
+            if (!data)
+                res.status(404).send({
+                    message: "No Exams found"
+                })
+            else {
+                // console.log(data[2].duration.getUTCMinutes());
+                res.status(200).send(data);
+
+            }
+        }).catch((err) => {
+            console.log(err)
+            res.status(500).send({
+                message: "Server error"
             })
-        else{
-            // console.log(data[2].duration.getUTCMinutes());
-            res.status(200).send(data);
-            
-        }    
-    }).catch((err)=>{
-        console.log(err)
-        res.status(500).send({
-            message: "Server error"
         })
-    })
-    
+
 };
 
 exports.viewParticularExam = (req, res) => {
     const eid = req.params.eid;
-    Exam.find({_id: eid})
-    .then((data)=>{
-        if(!data)
-            res.status(404).send({
-                message: "No Exams found"
+    Exam.find({ _id: eid })
+        .then((data) => {
+            if (!data)
+                res.status(404).send({
+                    message: "No Exams found"
+                })
+            else {
+                // console.log(data[2].duration.getUTCMinutes());
+                res.status(200).send(data);
+
+            }
+        }).catch((err) => {
+            res.status(500).send({
+                message: "Server error"
             })
-        else{
-            // console.log(data[2].duration.getUTCMinutes());
-            res.status(200).send(data);
-            
-        }    
-    }).catch((err)=>{
-        res.status(500).send({
-            message: "Server error"
         })
-    })
-    
+
 };
 
 exports.searchExam = (req, res) => {
     const eid = req.body.eid;
-    Exam.find({_id: eid})
-    .then((data)=>{
-        if(!data)
-            res.status(404).send({
-                status: 404
+    Exam.find({ _id: eid })
+        .then((data) => {
+            if (data.length === 0)
+                res.status(404).send({
+                    status: 404
+                })
+            else {
+                res.status(200).send({
+                    status: 200,
+                    msg: data
+                })
+
+            }
+        }).catch((err) => {
+            res.status(500).send({
+                status: 500
             })
-        else{
-            res.status(200).send({
-                status: 200
-            })
-            
-        }    
-    }).catch((err)=>{
-        res.status(500).send({
-            status: 500
         })
-    })
-    
+
 };
 
 exports.deleteExam = (req, res) => {
-    
+
     const examid = req.params.examid;
-    Exam.findByIdAndRemove(examid).then((data)=>{
-        if(!data)
+    Exam.findByIdAndRemove(examid).then((data) => {
+        if (!data)
             res.status(404).send({
                 message: "No Exam found"
             })
-        else{
+        else {
             res.status(200).send(data);
-        }    
-    }).catch((err)=>{
+        }
+    }).catch((err) => {
         res.status(500).send({
             message: "Server error"
         })
     })
-    
+
 };
 
 exports.updateExam = (req, res) => {
-    
+
     const examid = req.params.examid;
-    Exam.findByIdAndUpdate(examid,{
+    Exam.findByIdAndUpdate(examid, {
         // examid: parseInt(examid),
         title: req.body.title,
         duration: req.body.duration,
         totalMarks: req.body.totalMarks,
         examDate: req.body.examDate
-    },{useFindAndModify:false}).then((data)=>{
-        if(!data)
+    }, { useFindAndModify: false }).then((data) => {
+        if (!data)
             res.status(404).send({
                 message: "No Exam found"
             })
-        else{
+        else {
             res.status(200).send(data);
-        }    
-    }).catch((err)=>{
+        }
+    }).catch((err) => {
         console.log(err);
         res.status(500).send({
             message: "Server error"
         })
     })
     // Exam.findByIdAndRemove(examid)
-    
+
 };
 
 exports.generateQuestion = (req, res) => {
@@ -159,7 +160,8 @@ exports.generateQuestion = (req, res) => {
         c: req.body.c,
         d: req.body.d,
         ans: req.body.ans,
-        marks: req.body.marks
+        marks: req.body.marks,
+        _id: Math.floor(Math.random() * 9945365487)
     });
 
     question.save((err, question) => {
@@ -199,42 +201,42 @@ exports.generateQuestion = (req, res) => {
 
 exports.viewQuestion = (req, res) => {
     const examid = req.params.examid;
-    Question.find({examid:examid},(err,data)=>{
-        if(!data)
+    Question.find({ examid: examid }, (err, data) => {
+        if (!data)
             res.status(404).send({
                 message: "No Questions found"
             })
-        else{
+        else {
             res.status(200).send(data);
-        }  
-        
+        }
+
     })
-    
+
 };
 
 exports.deleteQuestion = (req, res) => {
-    
+
     const qid = req.params.qid;
-    Question.findByIdAndRemove(qid).then((data)=>{
-        if(!data)
+    Question.findByIdAndRemove(qid).then((data) => {
+        if (!data)
             res.status(404).send({
                 message: "No questions found"
             })
-        else{
+        else {
             res.status(200).send(data);
-        }    
-    }).catch((err)=>{
+        }
+    }).catch((err) => {
         res.status(500).send({
             message: "Server error"
         })
     })
-    
+
 };
 
 exports.updateQuestion = (req, res) => {
-    
+
     const qid = req.params.qid;
-    Question.findByIdAndUpdate(qid,{
+    Question.findByIdAndUpdate(qid, {
         // examid: parseInt(examid),
         examid: req.body.examid,
         question: req.body.question,
@@ -244,81 +246,81 @@ exports.updateQuestion = (req, res) => {
         d: req.body.d,
         ans: req.body.ans,
         marks: req.body.marks
-    },{useFindAndModify:false}).then((data)=>{
-        if(!data)
+    }, { useFindAndModify: false }).then((data) => {
+        if (!data)
             res.status(404).send({
                 message: "No Question found"
             })
-        else{
+        else {
             res.status(200).send(data);
-        }    
-    }).catch((err)=>{
+        }
+    }).catch((err) => {
         console.log(err);
         res.status(500).send({
             message: "Server error"
         })
     })
     // Exam.findByIdAndRemove(examid)
-    
+
 };
 
 exports.viewParticularQuestion = (req, res) => {
     const qid = req.params.qid;
-    Question.find({_id: qid})
-    .then((data)=>{
-        if(!data)
-            res.status(404).send({
-                message: "No question found"
+    Question.find({ _id: qid })
+        .then((data) => {
+            if (!data)
+                res.status(404).send({
+                    message: "No question found"
+                })
+            else {
+                // console.log(data[2].duration.getUTCMinutes());
+                res.status(200).send(data);
+
+            }
+        }).catch((err) => {
+            res.status(500).send({
+                message: "Server error"
             })
-        else{
-            // console.log(data[2].duration.getUTCMinutes());
-            res.status(200).send(data);
-            
-        }    
-    }).catch((err)=>{
-        res.status(500).send({
-            message: "Server error"
         })
-    })
-    
+
 };
 
 
-exports.sendmail = async(req, res) => {
-    console.log("hello",req.body)
+exports.sendmail = async (req, res) => {
+    console.log("hello", req.body)
     // let testAccount = await nodemailer.createTestAccount();
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // true for 465, false for other ports
-      auth: {
-        user: "rajsahoo7350@gmail.com", // generated ethereal user
-        pass: "apnakaamkar", // generated ethereal password
-      },
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: "rajsahoo7350@gmail.com", // generated ethereal user
+            pass: "apnakaamkar", // generated ethereal password
+        },
     });
-  
+
     // send mail with defined transport object
     transporter.sendMail({
-      from: '<noreply@apnakaamkar.gmail.com>', // sender address
-      to: req.body.email, // list of receivers
-      subject: "Exam Credentials", // Subject line
-      text: "Hello Students...This is your test id " + req.body.examid, // plain text body
-    //   html: "<b>Hello world?</b>", // html body
-    }, function(err, info) {
+        from: '<noreply@apnakaamkar.gmail.com>', // sender address
+        to: req.body.email, // list of receivers
+        subject: "Exam Credentials", // Subject line
+        text: "Hello Students...This is your test id " + req.body.examid, // plain text body
+        //   html: "<b>Hello world?</b>", // html body
+    }, function (err, info) {
         if (err) {
-          console.log(err)
+            console.log(err)
         } else {
             res.status(200).send(info.messageId);
         }
-     });
-  
+    });
+
     // console.log("Message sent: %s", info);
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-  
 
-    
-    
-    
+
+
+
+
 };

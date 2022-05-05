@@ -11,10 +11,10 @@ var corsoption = {
 };
 
 app.use(cors(corsoption));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 // app.use(axios);
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb',extended: true }));
 db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{
     useNewUrlParser: true,
     useUnifiedTopology: true

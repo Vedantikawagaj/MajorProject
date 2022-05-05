@@ -9,6 +9,7 @@ var userschema = new mongoose.Schema({
   email: String,
   password: String,
   image:String,
+  _id:Number,
   roles: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -17,11 +18,11 @@ var userschema = new mongoose.Schema({
   ]
 })
 
-userschema.plugin(autoIncrementuser.plugin, {
-  model: 'User',
-  field: '_id',
-  startAt: 201
-});
+// userschema.plugin(autoIncrementuser.plugin, {
+//   model: 'User',
+//   field: '_id',
+//   startAt: 201
+// });
 
 const User = mongoose.model(
   "User", userschema

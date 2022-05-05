@@ -7,8 +7,7 @@ function FaceApi() {
   const [captureVideo, setCaptureVideo] = React.useState(false);
   const video = document.getElementById('video')
   const videoRef = React.useRef();
-//   const videoHeight = 200;
-//   const videoWidth = 445;
+
   const canvasRef = React.useRef();
 
   React.useEffect(() => {

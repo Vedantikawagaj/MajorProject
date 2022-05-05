@@ -23,7 +23,7 @@ const CreateExam = () => {
             },
             body: JSON.stringify({
                 "title": title,
-                "duration": duration * 1000*60,
+                "duration": duration * 1000 * 60,
                 "totalMarks": marks,
                 "examDate": examDate.getDate(),
                 "examMonth": examDate.getMonth(),

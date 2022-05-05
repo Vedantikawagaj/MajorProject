@@ -11,14 +11,15 @@ var questionschema = new mongoose.Schema({
   c:String,
   d:String,
   ans: String,
-  marks: Number
+  marks: Number,
+  _id:Number
 })
 
-questionschema.plugin(autoIncrementuser.plugin, {
-  model: 'Question',
-  field: '_id',
-  startAt: 6001
-});
+// questionschema.plugin(autoIncrementuser.plugin, {
+//   model: 'Question',
+//   field: '_id',
+//   startAt: 6001
+// });
 
 const Question = mongoose.model(
   "Question", questionschema

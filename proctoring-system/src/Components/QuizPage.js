@@ -4,7 +4,7 @@ import '../ComponentCSS/QuizPage.css';
 import Quiz from './Quiz';
 import { connect } from 'react-redux';
 import { ActionTypes } from '../constants/actionTypes';
-import FaceApi from './FaceApi';
+
 
 
 const mapStateToProps = state => { return { ...state.quiz } };
@@ -45,7 +45,7 @@ class QuizPage extends Component {
       // let quiz = res;
       let quiz = {};
       quiz.question = res;
-      // console.log(quiz);
+      console.log(quiz);
       quiz.question.forEach(q => {
         q.selected = false;
         q.s_ans = "";
@@ -67,17 +67,11 @@ class QuizPage extends Component {
     
     return (
       <div className="container">
-        <header className="p-2">
-          <div className="row">
-            <div className="col-12">
-              <h3>This Exam Is Being Proctored</h3>
-            </div>
-            
-          </div>
-        </header>
+    
         
         <Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode={this.state.mode} />
-        <FaceApi/>
+        
+        
       </div>
     );
   }
