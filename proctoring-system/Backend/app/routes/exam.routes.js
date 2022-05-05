@@ -29,5 +29,5 @@ module.exports = function(app) {
   app.post("/api/se", controller.searchExam);
   app.post("/api/sendmail",controller.sendmail);
   app.post("/api/post-log",controller.generateLog);
-  app.get("/api/view-log/:eid", controller.viewLogOfExam);
+  app.post("/api/view-log", controller.viewLogOfExam);
 };

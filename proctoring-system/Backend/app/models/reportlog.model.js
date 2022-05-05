@@ -6,10 +6,11 @@ autoIncrementuser.initialize(mongoose);
 var reportlogchema = new mongoose.Schema({
    
   userid:Number,
-  examid: Number,
   log: String,
-  _id:Number,
-  timestamp: Date
+  timestamp: Date,
+  examid: Number,
+  _id:Number
+
 })
 
 // reportlogchema.plugin(autoIncrementuser.plugin, {

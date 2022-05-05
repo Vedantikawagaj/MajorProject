@@ -418,24 +418,24 @@ def get_frame(imgData):
     eye_movements = ""
 
     if gaze.is_blinking():
-        eye_movements = 1
-        print("Blinking")
+        eye_movements = "Blinking"
+        # print()
     elif gaze.is_right():
-        eye_movements = 4
-        print("Looking right")
+        eye_movements = "Looking right"
+        # print()
     elif gaze.is_left():
-        eye_movements = 3
-        print("Looking left")
+        eye_movements = "Looking left"
+        # print()
     elif gaze.is_center():
-        eye_movements = 2
-        print("Looking center")
+        eye_movements = "Looking center"
+        # print()
     else:
-        eye_movements = 0
-        print("Not found!")
+        eye_movements ="Not found!"
+        # print()
     print(eye_movements)
 
     proctorDict = dict()  
-    proctorDict['jpg_as_text'] = jpg_as_text
+    # proctorDict['jpg_as_text'] = jpg_as_text
     proctorDict['mob_status'] = mob_status
     proctorDict['person_status'] = person_status
     proctorDict['user_move1'] = user_move1

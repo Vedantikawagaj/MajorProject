@@ -85,7 +85,7 @@ exports.viewParticularExam = (req, res) => {
 
 exports.generateLog = (req, res) => {
     console.log(req.body);
-    const uid = req.params.uid;
+    const uid = req.body.uid;
     const log = new ReportLog({
         userid: uid,
         log: req.body.log,
@@ -117,8 +117,8 @@ exports.generateLog = (req, res) => {
 };
 
 exports.viewLogOfExam = (req, res) => {
-    const eid = req.params.eid;
-    ReportLog.find({ _id: eid })
+    const eid = req.body.eid;
+    ReportLog.find({ examid: eid })
         .then((data) => {
             if (!data)
                 res.status(404).send({
