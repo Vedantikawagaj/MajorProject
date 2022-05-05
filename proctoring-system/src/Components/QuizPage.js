@@ -69,7 +69,7 @@ class QuizPage extends Component {
       <div className="container">
     
         
-        <Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode={this.state.mode} />
+        <Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode={this.state.mode} examid={this.props.examid}/>
         
         
       </div>

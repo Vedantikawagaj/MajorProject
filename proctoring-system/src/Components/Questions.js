@@ -98,7 +98,7 @@ class Questions extends Component {
                     <button id="next" className="btn btn-secondary" onClick={this.props.move}>Next</button>
                     <button id="last" className="btn btn-secondary" onClick={this.props.move}>Last</button>
                 </div>
-                <FaceApi/>
+                <FaceApi  examid={this.props.examid}/>
             </div >
             
         )

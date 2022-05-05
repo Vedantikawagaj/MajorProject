@@ -43,15 +43,21 @@ def video_feed():
 		image = request.get_json()
 		# print(image)
 		proctorData = camera.get_frame(image['ssimage'])
-		jpg_as_text = proctorData['jpg_as_text']
+		# jpg_as_text = proctorData['jpg_as_text']
 		mob_status =proctorData['mob_status']
 		person_status = proctorData['person_status']
 		user_move1 = proctorData['user_move1']
 		user_move2 = proctorData['user_move2']
 		eye_movements = proctorData['eye_movements']
 		print(mob_status,person_status,user_move1,user_move2,eye_movements)
-	
-		return "hello"
+		log={
+			"mob" : mob_status,
+			"person":person_status,
+			"head_move_1":user_move1,
+			"head_move_2":user_move2,
+			"eye":eye_movements
+		}
+		return log
 
 if __name__ == "__main__":
 	app.run(host = "0.0.0.0",debug=False)        
