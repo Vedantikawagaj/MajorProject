@@ -27,5 +27,7 @@ module.exports = function(app) {
   app.put("/api/question/uq/:qid", controller.updateQuestion);
   app.get("/api/question/vpq/:qid", controller.viewParticularQuestion);
   app.post("/api/se", controller.searchExam);
-  app.post("/api/sendmail",controller.sendmail)
+  app.post("/api/sendmail",controller.sendmail);
+  app.post("/api/post-log",controller.generateLog);
+  app.get("/api/view-log/:eid", controller.viewLogOfExam);
 };
