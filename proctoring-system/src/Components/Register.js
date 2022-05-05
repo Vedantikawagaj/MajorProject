@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, {  useState } from 'react'
 import { Link } from 'react-router-dom';
 import Webcam from "react-webcam";
 import '../ComponentCSS/Camera.css'
@@ -40,11 +40,7 @@ const Register = () => {
         height: 200,
         facingMode: "user"
     };
-    // const capture = () => {
-    //     const imageSrc = webcamRef.current.getScreenshot();
-       
-    //     setImgSrc(imageSrc);
-    // }
+  
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
@@ -56,7 +52,7 @@ const Register = () => {
                 <div className="container py-5 h-100">
                     <div className="row d-flex align-items-center justify-content-center h-100">
                         <div className="col-md-8 col-lg-7 col-xl-6">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" className="img-fluid" alt="Phone image" />
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" className="img-fluid" alt="Phone" />
                         </div>
 
                         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
@@ -156,6 +152,7 @@ const Register = () => {
                                      <div type="submit" className="btn btn-dark btn-sm btn-block btn-h mv2" onClick={capture}>Capture Image</div>
                                     {imgSrc && (
                                         <img
+                                        alt="ss"
                                             src={imgSrc}
                                             className="mv2"
                                         />

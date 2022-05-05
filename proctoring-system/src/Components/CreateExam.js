@@ -1,6 +1,6 @@
 import SideNavbar from "./SideNavbar"
 import '../ComponentCSS/SideNavbar.css'
-import { Link, useParams } from "react-router-dom"
+import { Link} from "react-router-dom"
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 

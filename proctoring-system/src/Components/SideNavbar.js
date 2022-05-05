@@ -3,36 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import '../ComponentCSS/SideNavbar.css'
 
-import { useNavigate } from 'react-router-dom';
 const SideNavbar = () => {
-    var [examclassname, setexamclassname] = useState("dashboard-nav-dropdown show");
-    var [quesclassname, setquesclassname] = useState("dashboard-nav-dropdown show");
-    var [showExam, setshowExam] = useState(false);
-    var [showQuestion, setshowQuestion] = useState(false);
 
-
-    const history = useNavigate();
-    // const toggleExam = () => {
-    //     setshowExam(!showExam);
-    //     if (showExam) {
-    //         setexamclassname("dashboard-nav-dropdown show ")
-    //     }
-    //     else {
-    //         setexamclassname("dashboard-nav-dropdown ")
-    //     }
-    //     console.log(examclassname);
-    // }
-
-    // const toggleQuestion = () => {
-    //     setshowQuestion(!showQuestion);
-    //     if (showQuestion) {
-    //         setquesclassname("dashboard-nav-dropdown show ")
-    //     }
-    //     else {
-    //         setquesclassname("dashboard-nav-dropdown ")
-    //     }
-    //     console.log(quesclassname);
-    // }
 
     const [user, setuser] = useState({});
     useEffect(() => {
@@ -45,10 +17,7 @@ const SideNavbar = () => {
         getuserdata();
     }, [])
 
-    // const logoutClicked = () => {
-    //     localStorage.clear(); //if you want to clear localstorage data
-    //     history("/"); //redirect to login
-    //   };
+
     return (
 
         <div className="dashboard-nav">
@@ -67,7 +36,7 @@ const SideNavbar = () => {
                 </Link>
 
                 {
-                    Object.keys(user).length > 0 && user.roles[0] != 'ROLE_TEACHER' &&
+                    Object.keys(user).length > 0 && user.roles[0] !== 'ROLE_TEACHER' &&
                     <Link style={{ textDecoration: 'none' }} to='/startexam'>
                         <h6 className="dashboard-nav-item">
                             <i className="fa fa-book"></i>
@@ -85,7 +54,7 @@ const SideNavbar = () => {
                 } */}
                 {
                     Object.keys(user).length > 0 && user.roles[0] === 'ROLE_TEACHER' &&
-                    <div className={examclassname}>
+                    <div className="dashboard-nav-dropdown show">
                         <a className="dashboard-nav-item dashboard-nav-dropdown-toggle " >
                             <i className="fas fa-plus"></i>
                             Examination
@@ -111,7 +80,7 @@ const SideNavbar = () => {
                 }
                 {
                     Object.keys(user).length > 0 && user.roles[0] === 'ROLE_TEACHER' &&
-                    <div className={quesclassname}>
+                    <div className="dashboard-nav-dropdown show">
                         <a className="dashboard-nav-item dashboard-nav-dropdown-toggle ">
                             <i className="fa fa-question"></i>
                             Questions
@@ -154,11 +123,17 @@ const SideNavbar = () => {
                     <div className="nav-item-divider"></div>
                 }
                 {/* <h6 className="dashboard-nav-item" onClick={logoutClicked}> */}
-                <h6 className="dashboard-nav-item" >
+                {/* <a className="" >
 
                     <i className="fas fa-sign-out-alt"></i>
                     Logout
-                </h6>
+                </a> */}
+                <Link style={{ textDecoration: 'none' }} to='/'>
+                    <h6 className="dashboard-nav-item">
+                        <i className="fas fa-sign-out-alt"></i>
+                        Log out
+                    </h6>
+                </Link>
 
             </nav>
         </div>

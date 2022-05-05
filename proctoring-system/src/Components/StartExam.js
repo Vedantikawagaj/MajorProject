@@ -1,7 +1,8 @@
 import SideNavbar from "./SideNavbar"
 import '../ComponentCSS/SideNavbar.css'
-import { Link, useParams,useNavigate  } from "react-router-dom"
+import { useNavigate  } from "react-router-dom"
 import { useState } from "react";
+
 
 const StartExam = () => {
     const [examid, setexamid] = useState('');
@@ -66,6 +67,7 @@ const StartExam = () => {
                             <div type="submit" className="btn btn-primary btn-lg btn-block" onClick={examsearch}>Start Exam</div>
 
                             </div>
+                            
 
 
 

@@ -39,9 +39,7 @@ def verifyImage():
 @app.route('/video_feed', methods=['GET','POST'])
 def video_feed():
 	if request.method == "POST":
-		# imgData = request.form['data[imgData]']
-		# testid = request.form['data[testid]']
-		# voice_db = request.form['data[voice_db]']
+	
 		image = request.get_json()
 		# print(image)
 		proctorData = camera.get_frame(image['ssimage'])
@@ -52,15 +50,7 @@ def video_feed():
 		user_move2 = proctorData['user_move2']
 		eye_movements = proctorData['eye_movements']
 		print(mob_status,person_status,user_move1,user_move2,eye_movements)
-		# cur = mysql.connection.cursor()
-		# results = cur.execute('INSERT INTO proctoring_log (email, name, test_id, voice_db, img_log, user_movements_updown, user_movements_lr, user_movements_eyes, phone_detection, person_status, uid) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-		# 	(dict(session)['email'], dict(session)['name'], testid, voice_db, jpg_as_text, user_move1, user_move2, eye_movements, mob_status, person_status,dict(session)['uid']))
-		# mysql.connection.commit()
-		# cur.close()
-		# if(results > 0):
-		# 	return "recorded image of video"
-		# else:
-		# 	return "error in video"
+	
 		return "hello"
 
 if __name__ == "__main__":

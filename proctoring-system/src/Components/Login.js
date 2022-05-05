@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import '../ComponentCSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import Webcam from "react-webcam";
@@ -50,10 +50,7 @@ const Login = () => {
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
-        // var d1 = imageSrc.toDataURL("image/png");
-        var res = imageSrc.replace("data:image/png;base64,", "");
-        // console.log(imageSrc)
-        // setImgSrc(res);
+    
     }, [webcamRef, setImgSrc]);
 
     return (
@@ -109,7 +106,6 @@ const Login = () => {
                                         height={200}
                                         width={445}
                                         videoConstraints={videoConstraints}
-                                        // screenshotFormat="image/png"
                                         screenshotFormat="image/jpeg"
                                         mirrored={true}
 
