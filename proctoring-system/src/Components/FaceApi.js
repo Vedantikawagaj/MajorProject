@@ -55,7 +55,7 @@ function FaceApi(props) {
         })
 
         const data = await result.json();
-        console.log(data)
+        // console.log(data)
         getuserdata(data);
         // console.log(user)
         

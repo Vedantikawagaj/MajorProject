@@ -18,6 +18,8 @@ import FunctionalQuiz from './Components/FunctionalQuiz';
 import AddStudents from './Components/AddStudents';
 import StartExam from './Components/StartExam';
 import Timer from './Components/Timer';
+import Viewreport from './Components/Viewreport';
+import PublishReport from './Components/PublishReport';
 
 
 
@@ -44,6 +46,8 @@ function App() {
         <Route path='/addemail/:eid' element={ <AddStudents/>}/>
         <Route path='/startexam' element={ <StartExam/>}/>
         <Route path='/timer' element={ <Timer/>}/>
+        <Route path='/viewreport' element={ <Viewreport/>}/>
+        <Route path='/publishreport/:eid' element={ <PublishReport/>}/>
       </Routes>
     </div>
       

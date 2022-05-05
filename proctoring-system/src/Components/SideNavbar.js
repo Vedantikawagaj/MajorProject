@@ -106,10 +106,16 @@ const SideNavbar = () => {
                 }
                 {
                     Object.keys(user).length > 0 && user.roles[0] === 'ROLE_TEACHER' &&
-                    <a className="dashboard-nav-item active">
-                        <i className="fas fa-clipboard"></i>
-                        Publish Result
-                    </a>
+                    // <a className="dashboard-nav-item active">
+                    //     <i className="fas fa-clipboard"></i>
+                    //     View Reports
+                    // </a>
+                    <Link style={{ textDecoration: 'none' }} to='/viewreport'>
+                        <h6 className="dashboard-nav-item">
+                            <i className="fas fa-clipboard"></i>
+                            View Reports
+                        </h6>
+                    </Link>
                 }
                 {/* {
                     Object.keys(user).length > 0 && user.roles[0] === 'ROLE_TEACHER' &&
