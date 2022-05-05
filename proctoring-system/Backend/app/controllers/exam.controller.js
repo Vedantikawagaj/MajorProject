@@ -88,10 +88,14 @@ exports.generateLog = (req, res) => {
     const uid = req.body.uid;
     const log = new ReportLog({
         userid: uid,
-        log: req.body.log,
         timestamp: req.body.timestamp,
         examid: req.body.examid,
-        _id: Math.floor(Math.random() * 9945365487)
+        _id: Math.floor(Math.random() * 9945365487),
+        eye: req.body.eye,
+        head_move_1: req.body.head_move_1,
+        head_move_2: req.body.head_move_2,
+        mob: req.body.mob,
+        person: req.body.person
     });
 
     log.save((err, log) => {
